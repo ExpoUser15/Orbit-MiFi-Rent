@@ -1,15 +1,15 @@
-  .floating-image {
+  .floating-image{
     animation: floatAnimation 5s ease-in-out infinite;
   }
-  
+
   @keyframes floatAnimation {
     0% {
-      transform: translateY(0); /* Mulai dari posisi awal */
+      transform: translateY(0); 
     }
     50% {
-      transform: translateY(-20px); /* Naik */
+      transform: translateY(-20px); 
     }
     100% {
-      transform: translateY(0); /* Kembali ke posisi awal */
+      transform: translateY(0); 
     }
   }

@@ -26,8 +26,9 @@
             <div class="h-[3px] w-[20px] bg-slate-200 rounded-sm"></div>
         </div>
 
-        <div class="hidden lg:block w-[200px] me-5">
+        <div class="hidden lg:block w-[300px] me-5">
             <ul class="text-slate-100 flex justify-between">
+                <li class="cursor-pointer text-blue-500 border-b border-blue-500 hover:text-blue-700 duration-300 ease"><a href="home.html">Home</a></li>
                 <li class="cursor-pointer hover:text-blue-500 duration-300 ease"><a href="rent.html">Rent</a></li>
                 <li class="cursor-pointer hover:text-blue-500 duration-300 ease"><a href="about.html">About</a></li>
                 <li class="cursor-pointer hover:text-blue-500 duration-300 ease"><a href="contact.html">Contact</a></li>
@@ -35,7 +36,7 @@
         </div>
     </nav>
 
-    <aside class="w-[75%] bg-[#C90030] h-screen fixed z-[999] right-0 me-[-2000px] duration-700 ease-in-out lg:hidden">
+    <aside class="w-[60%] bg-[#C90030] h-screen fixed z-[999] right-0 me-[-2000px] duration-500 ease-in-out lg:hidden">
         <div class="text-3xl text-slate-100 text-end m-5" id="xmark">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -63,15 +64,15 @@
         </div>
     </aside>
 
-    <header class="relative z-10 shadow">
+    <header class="relative z-10 shadow headSection">
         <div class="absolute w-full h-screen">
             <div class="absolute w-full h-screen bg-black opacity-70"></div>
-            <img src="assets/img/home/banner.jpg" alt="telkomsel-banner" class="h-screen w-full object-cover">
+            <div style="background-image: url('assets/img/home/banner.jpg');" class="bg-fixed h-screen w-full bg-cover bg-center"></div>
         </div>
 
         <div class="relative z-40 h-screen w-full flex flex-col md:flex-row md:items-center md:justify-evenly justify-center text-slate-100">
-            <img src="assets/img/home/modem.png" alt="modem" class="self-center w-[180px] lg:w-[300px] floating-image">
-            <div class="px-4 mt-2 w-96 lg:ms-5">
+            <img src="assets/img/home/modem.png" alt="modem" class="self-center w-[180px] lg:w-[300px] duration-1000 ease me-[200px] opacity-0 headPic floating-image">
+            <div class="px-4 mt-2 w-96 lg:ms-5 duration-1000 ease translate-y-[-100px] opacity-0 headText">
                 <h1 class="text-2xl lg:text-4xl poppins-semibold">WIFI FOR RENT</h1>
                 <p class="text-md my-4">Stay effortlessly connected while exploring the breathtaking vistas of Paradise Island Papua with
                     Telkomsel Orbit.</p>
@@ -82,8 +83,65 @@
         </div>
     </header>
 
-    <section class="h-screen w-full bg-gradient-to-t to-[#1F0235] from-[#B8050A]">
+    <!-- Brief Section -->
 
+    <section class="overflow-hidden w-full bg-gradient-to-t to-[#1F0235] from-[#B8050A] pt-[30px] text-slate-100 px-3 md:px-[50px] lg:pt-[80px] lg:px-[80px]" id="briefSection">
+
+        <div class="pb-5 md:flex md:items-center briefSubSection1">
+            <img src="assets/img/home/picture.png" alt="" class="min-w-[200px] md:min-w-[400px] lg:min-w-[550px] opacity-0 duration-1000 ease lg:delay-200 briefPic">
+
+            <div class="briefExplan translate-x-[500px] opacity-0 duration-1000 ease">
+                <h1 class="poppins-semibold text-2xl lg:text-4xl">Brief Explanation of The Importance of Orbit MiFi</h1>
+        
+                <hr class="my-[20px] bg-slate-900 rounded-sm">
+
+                <div class="h-fit p-3 rounded-sm shadow-lg overflow-auto" style="background-color: rgba(255,255,255, 0.1);">
+                    <div id="whatBtn" class="p-2 rounded-sm cursor-pointer duration-700 ease" style="background-color: rgba(29, 78, 216, 0.8);">
+                        <h1 class="text-center text-slate-200">What is Orbit MiFi?</h1>
+                    </div>
+                    <div id="whyBtn" class="p-2 rounded-sm mt-2 cursor-pointer ease duration-700" style="background-color: rgba(255, 255, 255, 0.1);">
+                        <h1 class="text-center text-slate-200">Why Using Orbit MiFi?</h1>
+                    </div>
+                    <div class="mt-5 text-sm poppins-light">
+                        <p id="explanationText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, fugit molestias? Quam provident magni culpa autem minima aut tenetur vel odio ab dicta! Ut explicabo possimus est repudiandae? Enim, nobis?
+                        Non, quis ipsam numquam recusandae nemo fugiat impedit soluta blanditiis vel sint pariatur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-[60px] flex justify-evenly briefSubSection">
+            <div class="flex flex-col lg:flex-row gap-4">
+                <div class="p-5 rounded-sm translate-x-[-50px] opacity-0 duration-1000 ease text" style="background-color: rgba(255,255,255, 0.1);">
+                    <h1 class="text-2xl poppins-semibold">Simple</h1>
+                    <p>Tourists do not need to register a device or the first stay is ready to use and the mifi modem can be accessed up to 16 devices</p>
+                </div>
+                <div class="p-5 rounded-sm translate-x-[-100px] opacity-0 duration-1000 ease text" style="background-color: rgba(255,255,255, 0.1);">
+                    <h1 class="text-2xl poppins-semibold">Safe</h1>
+                    <p>Every travel orbit modem rental needs to deposit the price of the modem which will later be returned after completion of use.
+                    </p>
+                </div>
+                <div class="p-5 rounded-sm translate-x-[-150px] opacity-0 duration-1000 ease text" style="background-color: rgba(255,255,255, 0.1);">
+                    <h1 class="text-2xl poppins-semibold">Affordable</h1>
+                    <p>In addition to cheap rental prices and for packages, it also varies and prices are more affordable than the new starter pack</p>
+                    <div>
+                        <img src="portal-T-gradient.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- <div style="background-image: url(assets/img/home/wififorrent-sm.jpg);" class="bg-cover bg-center w-[300px] h-[450px] rounded-lg"></div> -->
+        </div>
+
+    </section>
+
+    <!-- Products Section -->
+
+    <section class="h-screen bg-gradient-to-t from-[#1F0235] to-[#B8050A]  pt-[30px] text-slate-100 px-3 md:px-[50px] lg:pt-[80px] lg:px-[80px]">
+        <div>
+            <h1 class="poppins-semibold text-2xl lg:text-4xl">Orbit MiFi Products</h1>
+        </div>
+
+        <hr class="my-[20px] bg-slate-900 rounded-sm">
     </section>
 
 
