@@ -13,3 +13,33 @@
       transform: translateY(0); 
     }
   }
+
+  .animation-card:before {
+    content:  '';
+    position: absolute;
+    width: 50%;
+    height: 850px;
+    left: 70px;
+    top: -250px;
+    background-color: aqua;
+    transform: rotate(45deg);
+    animation: borderAnimation 2s linear infinite;
+  }
+
+  @keyframes borderAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(360deg);
+      filter: hue-rotate(-360deg) saturate(1000%);
+    }
+  }
+  
+  .animation-card:after{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-image: linear-gradient(-180deg, #1F0235, #B8050A);
+    border-radius: inherit;
+  }

@@ -1,5 +1,4 @@
 // Working on Navbar obeserver
-
 const briefSection = document.getElementById('briefSection');
 
 let observer = new IntersectionObserver((entries, observer) => {
@@ -70,6 +69,7 @@ const sectionsAnimation = (el, el2, margin, option, ...val) => {
         console.log(entry.isIntersecting)
         val.forEach(item =>{
           el2.classList.add(item);
+          
         })
       }else{
         val.forEach(item =>{
@@ -100,9 +100,24 @@ observer.observe(briefSubSection);
 sectionsAnimation(header, headText, "", 0.5, "translate-y-0", "opacity-100");
 sectionsAnimation(header, headPic, "", 0.5, "me-0", "opacity-100");
 
-sectionsAnimation(briefSubSection1, briefPic, "100px", 0.5, "opacity-100");
-sectionsAnimation(briefSubSection1, briefExplan, "300px", 0.6,"translate-x-0", "opacity-100");
+sectionsAnimation(briefSubSection1, briefPic, "300px 0px 200px 0px", 0.5, "opacity-100");
+sectionsAnimation(briefSubSection1, briefExplan, "300px 0px 500px 0px", 1,"translate-x-0", "opacity-100");
 
 textBrief.forEach(item => {
   sectionsAnimation(briefSubSection, item, "-200px", 0, "translate-x-0", "opacity-100");
-})
+});
+
+// Working on products section observer
+
+const productSection = document.getElementById('productSection');
+const card = document.querySelectorAll('.animation-card');
+const planPic = document.querySelector('.planPic');
+
+observer.observe(productSection);
+
+sectionsAnimation(productSection, planPic, "100px", 0.2, "translate-y-0", "opacity-100");
+
+card.forEach(item => {
+  sectionsAnimation(productSection, item, "-50px", 0.2, "translate-x-0", "opacity-100");
+});
+
