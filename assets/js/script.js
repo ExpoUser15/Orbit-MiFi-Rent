@@ -1,5 +1,7 @@
 // Working on Navbar obeserver
-const briefSection = document.getElementById('briefSection');
+const sectionContainer = document.getElementById('sectionContainer');
+
+const footer = document.querySelector('footer');
 
 let observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
@@ -11,9 +13,9 @@ let observer = new IntersectionObserver((entries, observer) => {
       document.querySelector('nav').classList.remove('shadow');
     }
   });
-}, { rootMargin: "300px" }); // Opsi konfigurasi, misalnya threshold untuk menentukan seberapa banyak elemen yang terlihat
+}, { rootMargin: "-200px" }); // Opsi konfigurasi, misalnya threshold untuk menentukan seberapa banyak elemen yang terlihat
 
-observer.observe(briefSection);
+observer.observe(sectionContainer);
 
 // Working on Sidebar
 
@@ -66,15 +68,10 @@ const sectionsAnimation = (el, el2, margin, option, ...val) => {
   const sectionsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
-        console.log(entry.isIntersecting)
         val.forEach(item =>{
           el2.classList.add(item);
-          
-        })
-      }else{
-        val.forEach(item =>{
-          el2.classList.remove(item);
-        })
+        });
+        observer.unobserve(entry.target);
       }
     })
   }, { threshold: option,
@@ -88,6 +85,7 @@ const header = document.querySelector('.headSection');
 const headPic = document.querySelector('.headPic');
 const headText = document.querySelector('.headText');
 
+const briefSection = document.getElementById('briefSection');
 const briefPic = document.querySelector('.briefPic');
 const briefExplan = document.querySelector('.briefExplan');
 
@@ -95,7 +93,7 @@ const briefSubSection1 = document.querySelector('.briefSubSection1');
 const briefSubSection = document.querySelector('.briefSubSection');
 const textBrief = document.querySelectorAll('.text');
 
-observer.observe(briefSubSection);
+// observer.observe(briefSubSection);
 
 sectionsAnimation(header, headText, "", 0.5, "translate-y-0", "opacity-100");
 sectionsAnimation(header, headPic, "", 0.5, "me-0", "opacity-100");
@@ -113,11 +111,32 @@ const productSection = document.getElementById('productSection');
 const card = document.querySelectorAll('.animation-card');
 const planPic = document.querySelector('.planPic');
 
-observer.observe(productSection);
-
 sectionsAnimation(productSection, planPic, "100px", 0.2, "translate-y-0", "opacity-100");
 
 card.forEach(item => {
   sectionsAnimation(productSection, item, "-50px", 0.2, "translate-x-0", "opacity-100");
 });
 
+// Working on testimonials observer
+
+const stepsSection = document.querySelector('#stepsSection');
+const stepCards = document.querySelectorAll('.stepCards');
+
+stepCards.forEach(item => {
+  sectionsAnimation(stepsSection, item, "-50px", 0.2, "translate-y-0", "opacity-100");
+})
+
+// Working on testimonials observer
+
+const testimonialCards = document.querySelectorAll('.testiCard');
+const testimonialSection = document.querySelector('#testimonials');
+
+const logo = document.querySelectorAll('.logo');
+
+sectionsAnimation(testimonialSection, testimonialCards[0], "-50px", 0.2, "lg:translate-y-0", "opacity-100");
+sectionsAnimation(testimonialSection, testimonialCards[1], "-50px", 0.2, "lg:translate-y-6", "opacity-100");
+sectionsAnimation(testimonialSection, testimonialCards[2], "-50px", 0.2, "lg:translate-y-2", "opacity-100");
+
+logo.forEach(item => {
+  sectionsAnimation(testimonialSection, item, "-50px", 0.2, "translate-y-0", "opacity-100");
+});
