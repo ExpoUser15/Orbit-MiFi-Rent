@@ -1,0 +1,54 @@
+<div id="notif" class="bg-gradient-to-r <%= !data.bg ? 'from-yellow-300 to-orange-400' : 'from-sky-300 to-blue-400' %> w-[300px] p-2 rounded-lg m-auto border border-orange-800 fixed z-[9999] top-[80px] right-2 <% data.style %> duration-1000 ease">
+    <%= data.notification.element %>
+    <%= data.notification.audio %>
+</div>
+
+<div id="sectionContainer">
+        
+    <section
+        class="text-slate-100 bg-gradient-to-t to-[#1F0235] from-[#B8050A] overflow-hidden">
+        <h1 class="text-center text-4xl poppins-semibold pt-[50px]">Get in touch</h1>
+        <p class="text-center text-slate-200 poppins-light mt-3">Contact us if you have any problems.</p>
+
+        <div class="grid md:grid-cols-12 text-slate-100 px-3 md:px-[50px] lg:px-[80px] pb-[50px] pt-[50px] gap-6 md:gap-6">
+
+            <div class="col-span-12 md:col-span-5">
+                <iframe class="rounded-sm w-full h-[400px] md:h-full m-auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3450214260374!2d131.2793121!3d-0.8825373999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5eab1003d111ad%3A0xae59cad18d780864!2sGRHA%20MERAH%20PUTIH!5e0!3m2!1sid!2sid!4v1713015828696!5m2!1sid!2sid"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+           
+
+            <div class="p-5 col-span-12 md:col-span-7 shadow-lg rounded-sm w-full" style="background-color: rgba(255, 255, 255, 0.1);">
+                <form id="contactForm" >
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label for="name" class="text-sm duration-200 ease">Tell Us
+                                Your Name <span class="text-red-400">*</span></label>
+                            <input type="text" name="name"
+                                class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+                        </div>
+                        <div>
+                            <label for="email" class="text-sm duration-200 ease">Enter
+                                Your Email <span class="text-red-400">*</span></label>
+                            <input type="email" name="email"
+                                class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <label for="phone" class="text-sm duration-200 ease">Enter Your Phone</label>
+                        <input type="text" name="phone"
+                            class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+                    </div>
+                    <div class="mt-8">
+                        <label for="message" class="text-sm duration-200 ease">Message <span class="text-red-400">*</span></label>
+                        <textarea name="message" id="" cols="30" rows="10" class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required"></textarea>
+                    </div>
+                    <button class="p-2 px-4 rounded-sm bg-[#0047FF] mt-4 hover:bg-blue-900 duration-300 ease submit-btn" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <%- include('../layouts/footer') %>
+
+</div>

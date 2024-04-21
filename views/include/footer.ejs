@@ -1,0 +1,13 @@
+<script src="assets/js/font-awesome/all.min.js" crossorigin="anonymous"></script>
+    <script src="assets/js/components/navbar.js"></script>
+    <script src="assets/js/components/sidebar.js"></script>
+    <% if(data.page === 'home'){ %>
+        <script src="assets/js/script.js"></script>
+    <% } else if(data.page === 'rent') { %>
+        <script src="assets/js/rent.js"></script>
+    <% } else { %>
+        <script src="assets/js/contact.js"></script>
+    <% } %>
+</body>
+
+</html>

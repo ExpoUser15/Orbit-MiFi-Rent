@@ -1,0 +1,38 @@
+<nav
+  class="w-full flex justify-between items-center p-4 fixed z-50 duration-200 ease"
+>
+  <div class="md:ms-5">
+    <a href="/"
+      ><img src="assets/img/logo/telkomsel-logo.png" class="h-[30px]" alt=""
+    /></a>
+  </div>
+  <div class="lg:hidden me-2" id="bars">
+    <div class="h-[3px] w-[20px] bg-slate-200 rounded-sm"></div>
+    <div class="h-[3px] w-[20px] bg-slate-200 rounded-sm my-1"></div>
+    <div class="h-[3px] w-[20px] bg-slate-200 rounded-sm"></div>
+  </div>
+
+  <div class="hidden lg:block w-[300px] me-5">
+    <ul class="text-slate-100 flex justify-between">
+        
+      <li class="<%= data.page === 'home' ? 'cursor-pointer text-blue-500 border-b border-blue-500 hover:text-blue-700 duration-300 ease' : 'cursor-pointer hover:text-blue-500 duration-300 ease' %>">
+        <a href="/" class="<%= data.page === 'home' ? 'active' : 'link-hover' %>">Home</a>
+      </li>
+      <li
+        class="<%= data.page === 'rent' ? 'cursor-pointer text-blue-500 border-b border-blue-500 hover:text-blue-700 duration-300 ease' : 'cursor-pointer hover:text-blue-500 duration-300 ease' %>"
+      >
+        <a href="/rent" class="<%= data.page === 'rent' ? 'active' : 'link-hover' %>">Rent</a>
+      </li>
+      <li
+        class="<%= data.page === 'about' ? 'cursor-pointer text-blue-500 border-b border-blue-500 hover:text-blue-700 duration-300 ease' : 'cursor-pointer hover:text-blue-500 duration-300 ease' %>"
+      >
+        <a href="/about" class="<%= data.page === 'about' ? 'active' : 'link-hover' %>">About</a>
+      </li>
+      <li
+        class="<%= data.page === 'contact' ? 'cursor-pointer text-blue-500 border-b border-blue-500 hover:text-blue-700 duration-300 ease' : 'cursor-pointer hover:text-blue-500 duration-300 ease' %>"
+      >
+        <a href="/contact" class="<%= data.page === 'contact' ? 'active' : 'link-hover' %>">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
