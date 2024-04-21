@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telkomsel Orbit MiFi Rent</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="assets/img/logo/portal-T-gradient.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,7 +19,7 @@
 <body>
     <nav class="w-full flex justify-between items-center p-4 fixed z-50 duration-200 ease">
         <div class="md:ms-5">
-            <a href="home.html"><img src="assets/img/logo/telkomsel-logo.png" class="h-[30px]" alt=""></a>
+            <a href="home.html"><img src="assets/img/logo/telkomsel-logo.png" class="h-[30px]" alt="" loading="lazy"></a>
         </div>
         <div class="lg:hidden me-2" id="bars">
             <div class="h-[3px] w-[20px] bg-slate-200 rounded-sm"></div>
@@ -44,7 +45,7 @@
         </div>
 
         <div class="h-fit w-[150px] m-auto mt-[50px]">
-            <img src="assets/img/logo/telkomsel-logo.png" alt="telkomsel logo" class="m-auto">
+            <img src="assets/img/logo/telkomsel-logo.png" alt="telkomsel logo" class="m-auto" loading="lazy">
 
             <div class="mt-[50px] h-full">
                 <ul class="text-slate-100 flex flex-col justify-evenly items-center h-[200px]">
@@ -59,8 +60,8 @@
                 <h1 class="text-xl poppins-semibold text-center">Follow Us On</h1>
                 <div class="text-xl flex justify-evenly mt-2 items-center">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -282,13 +283,16 @@
 
             <div class="grid lg:grid-cols-3 lg:pt-[50px] gap-1">
                 <div class="p-5 rounded-sm group cursor-pointer m-auto rounded-xl shadow-lg lg:translate-y-8 opacity-0 duration-[2000ms] testiCard" style="background-color: rgba(255,255,255, 0.1);">
-                    <div class="mb-3">
+                    <div class="mb-3 md:mb-1">
                         <i class="fa-solid fa-quote-left text-4xl"></i>
                     </div>
                     <div class="mb-10 h-[180px] overflow-auto">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis inventore quis doloribus repellendus ipsam veniam rerum tempore! Distinctio rerum sit voluptates magnam, delectus, vitae autem perferendis repellendus non quo necessitatibus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam dolore odio veritatis rerum! Ex mollitia deleniti laborum eius minus vero a fugit exercitationem? Iste itaque vitae ullam? Eos, laboriosam error?</p>
                     </div>
-                    <p>~ John Doe</p>
+                    <div class="flex gap-4 items-center">
+                        <div style="background-image: url(assets/img/home/photo3.jpg);" class="bg-cover bg-center w-16 h-16 rounded-full"></div>
+                        <div>Rose</div>
+                    </div>
                 </div>
                 <div class="p-5 rounded-sm group cursor-pointer m-auto rounded-xl lg:translate-y-14 hidden lg:block shadow-lg opacity-0 duration-[2000ms] delay-400 testiCard" style="background-color: rgba(255,255,255, 0.1);">
                     <div class="mb-3">
@@ -297,7 +301,10 @@
                     <div class="mb-10 h-[180px] overflow-auto">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis inventore quis doloribus repellendus ipsam veniam rerum tempore! Distinctio rerum sit voluptates magn Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque illo totam nam laudantium ab explicabo ipsa mollitia impedit. Ea praesentium porro vero eaque dolores inventore accusamus minima tempore nostrum illo.</p>
                     </div>
-                    <p>~ John Doe</p>
+                    <div class="flex gap-4 items-center">
+                        <div style="background-image: url(assets/img/home/photo2.jpg);" class="bg-cover bg-center w-16 h-16 rounded-full"></div>
+                        <div>John Doe</div>
+                    </div>
                 </div>
                 <div class="p-5 rounded-sm group cursor-pointer m-auto rounded-xl lg:translate-y-10 hidden lg:block shadow-lg opacity-0 duration-[2000ms] delay-800 testiCard" style="background-color: rgba(255,255,255, 0.1);">
                     <div class="mb-3">
@@ -306,7 +313,11 @@
                     <div class="mb-10 h-[180px] overflow-auto">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis inventore quis doloribus repellendus ipsam veniam rerum tempore! Distinctio rerum sit voluptates magnam, delectus, </p>
                     </div>
-                    <p>~ John Doe</p>
+                    
+                    <div class="flex gap-4 items-center">
+                        <div style="background-image: url(assets/img/home/photo.jpg);" class="bg-cover bg-center w-16 h-16 rounded-full"></div>
+                        <div>Evelyn</div>
+                    </div>
                 </div>
             </div>
 
@@ -318,13 +329,13 @@
 
             <div class="p-5 mt-[50px] lg:mt-[100px] overflow-hidden rounded-xl">
                 <div class="w-full flex">
-                    <img src="assets/img/logo/telkom_logo.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-1 translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
-                    <img src="assets/img/logo/bumn.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-2 translate-y-6 duration-[2000ms] opacity-0 delay-[2000ms] logo">
-                    <img src="assets/img/logo/telkomsel-logo-large.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto translate-y-6 duration-[2000ms] opacity-0 delay-[2000ms] logo">
+                    <img loading="lazy" src="assets/img/logo/telkom_logo.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-1 translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
+                    <img loading="lazy" src="assets/img/logo/bumn.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-2 translate-y-6 duration-[2000ms] opacity-0 delay-[2000ms] logo">
+                    <img loading="lazy" src="assets/img/logo/telkomsel-logo-large.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto translate-y-6 duration-[2000ms] opacity-0 delay-[2000ms] logo">
                 </div>
                 <div class="w-full flex mt-10 px-0 md:px-20">
-                    <img src="assets/img/logo/Branch-Sorong.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
-                    <img src="assets/img/logo/PTH_LOGO_NEW.png" alt="" class="max-w-[100px] md:max-w-[180px] m-auto translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
+                    <img loading="lazy" src="assets/img/logo/Branch-Sorong.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
+                    <img loading="lazy" src="assets/img/logo/PTH_LOGO_NEW.png" alt="" class="max-w-[100px] md:max-w-[180px] m-auto translate-y-6 opacity-0 duration-[2000ms] delay-[2000ms] logo">
                 </div>
             </div>
 
@@ -333,7 +344,7 @@
         <footer class="bg-[#2D2C2C] px-[50px] lg:px-[80px">
             <div class="flex flex-col items-center md:grid md:grid-cols-3 pt-[60px] pb-[80px] text-slate-100">
                 <div>
-                    <img src="assets/img/logo/Branch-Sorong.png" alt="" class="w-[150px]">
+                    <img src="assets/img/logo/telkomsel-logo-large.png" alt="" class="w-[150px]">
 
                     <div class="mt-[80px] w-fit m-auto md:ms-1">
                         <h1 class="text-xl poppins-medium">Follow Us On</h1>
@@ -387,6 +398,8 @@
     </div>
 
     <script src="https://kit.fontawesome.com/79df314047.js" crossorigin="anonymous"></script>
+    <script src="assets/js/components/navbar.js"></script>
+    <script src="assets/js/components/sidebar.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 

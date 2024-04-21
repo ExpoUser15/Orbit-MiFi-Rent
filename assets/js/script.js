@@ -1,45 +1,3 @@
-// Working on Navbar obeserver
-const sectionContainer = document.getElementById('sectionContainer');
-
-const footer = document.querySelector('footer');
-
-let observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      document.querySelector('nav').classList.add('bg-[#0B0610]');
-      document.querySelector('nav').classList.add('shadow');
-    }else{
-      document.querySelector('nav').classList.remove('bg-[#0B0610]');
-      document.querySelector('nav').classList.remove('shadow');
-    }
-  });
-}, { rootMargin: "-200px" }); // Opsi konfigurasi, misalnya threshold untuk menentukan seberapa banyak elemen yang terlihat
-
-observer.observe(sectionContainer);
-
-// Working on Sidebar
-
-const menuBtn = document.getElementById('bars');
-const sidebar = document.querySelector('aside');
-const closeBtn = document.querySelector('#xmark');
-
-window.addEventListener('click', function(e){
-  if(sidebar.classList.contains('me-[0]' && e.target != menuBtn)){
-    sidebar.classList.remove('me-[0]');
-  }
-})
-
-menuBtn.addEventListener('click', function(e){
-  e.preventDefault();
-
-  sidebar.classList.add('me-[0]');
-})
-closeBtn.addEventListener('click', function(e){
-  e.preventDefault();
-
-  sidebar.classList.remove('me-[0]');
-})
-
 // Working on brief explanation
 
 const whatBtn = document.getElementById('whatBtn'),
@@ -140,3 +98,6 @@ sectionsAnimation(testimonialSection, testimonialCards[2], "-50px", 0.2, "lg:tra
 logo.forEach(item => {
   sectionsAnimation(testimonialSection, item, "-50px", 0.2, "translate-y-0", "opacity-100");
 });
+
+// Mobile testimonials slider
+
