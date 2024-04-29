@@ -1,10 +1,13 @@
+const notification = require("../../utils/notification");
+
+let success = false;
+
 const homeController = (req, res) => {
 
     const path = req.path;
-    
+
     const data = {
-        page: 'home',
-        path
+        path,
     };
 
     res.render('index.ejs', { data });
@@ -13,26 +16,46 @@ const homeController = (req, res) => {
 const rentController = (req, res) => {
     const path = req.path;
     const data = {
-        page: 'rent',
         path
     };
 
     res.render('index.ejs', { data });
 }
+
+const rentPostController = (req, res) => {
+    const body = req.body
+    const files = req.files
+
+    if (!body.name || !body.dc || !files.passport || !body.modem || !body.plan || !body.modemPrice || !body.price || !body.total ) {
+        return;
+    }
+
+    if(files.length < 2){
+        return;
+    }
+
+    // console.log(body)
+    // console.log(file)
+
+    success = true;
+    res.redirect('/rent');
+}
+
 const contactController = (req, res) => {
     const path = req.path;
-    const data = {
-        page: 'contact',
-        path
-    };
 
-    res.render('index.ejs', { data });
+    if(success){
+        const { notif } = notification('Successfully sent the messages', 'checked_190411.png', 'from-sky-300 to-blue-400');
+        success = false;
+        return res.render('index.ejs', { data: { path, notif, success: true } })
+    }
+
+    res.render('index.ejs', { data: { path } });
 }
 const aboutController = (req, res) => {
     const path = req.path;
     const data = {
-        page: 'about',
-        path
+        path,
     };
 
     res.render('index.ejs', { data });
@@ -41,27 +64,12 @@ const aboutController = (req, res) => {
 const contactPostController = (req, res) => {
     const body = req.body
 
-    if(!body.name || !body.email || !body.message){
+    if (!body.name || !body.email || !body.message) {
         return;
     }
 
-    res.render('index.ejs', { data: {
-        bg: true,
-        notification: {
-            element: `<div class="flex justify-between w-full" id=notif>
-                            <div class="flex items-center gap-5">
-                                <img src="assets/img/icon/checked_190411.png" alt="" class="w-10">
-                                <p class="text-sky-800 text-sm me-5">Successfully sent the messages!</p>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="cursor-pointer">
-                                    <i class="fa fa-xmark text-2xl text-red-800" id='closeNotif'></i>
-                                </div>
-                            </div>
-                        </div>`,
-            audio: '<audio autoplay id="audioNotif"><source src="assets/audio/cyan-message.mp3" type="audio/mp3"></audio>'
-        }
-    }});
+    success = true;
+    res.redirect('/contact');
 }
 
 module.exports = {
@@ -70,4 +78,5 @@ module.exports = {
     aboutController,
     contactController,
     contactPostController,
+    rentPostController,
 }
