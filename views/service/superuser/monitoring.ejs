@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../font.css">
+    <script src="https://kit.fontawesome.com/79df314047.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            font-family: "Poppins", sans-serif;
+        }
+        ::backdrop {
+            background-image: linear-gradient(
+                45deg,
+                rgb(16, 13, 16),
+                rgb(26, 24, 24),
+                rgb(21, 21, 21),
+                rgb(45, 47, 45)
+            );
+            opacity: 0.75;
+        }
+    </style>
+    <title>Super User | Telkomsel</title>
+</head>
+<body>
+    <div class="w-full bg-slate-100">
+        <nav class="w-full h-16 flex items-center justify-end px-6 bg-slate-800 fixed z-20">
+            <a href="#" class="p-2 bg-red-600 text-white rounded-sm hover:bg-red-700 duration-500 text-sm">Logout</a>
+        </nav>
+
+        <aside class="w-60 h-screen bg-red-500 p-5 fixed z-[999] text-slate-200">
+            <img src="../telkomsel-logo.png" alt="" class="mb-8">
+            <h1 class="text-2xl font-semibold uppercase">Super User</h1>
+            <hr class="mt-5">
+            <div class="mt-24">
+                <ul class="h-32 flex flex-col justify-between">
+                    <li><a href="dashboard.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-gauge me-4"></i>Dashboard</a></li>
+                    <li><a href="users.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-users me-3"></i>Users</a></li>
+                    <li><a href="monitoring.html" class="text-slate-400 hover:text-slate-200 duration-500"><i class="fa-solid fa-eye me-3"></i>Monitoring</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section id="rental" class="pe-10 ps-72 pt-32 mb-10">
+            <h1 class="text-3xl font-semibold">Rental Monitoring</h1>
+            <div class="mt-5 min-h-[400px] overflow-auto">
+                <div>
+                    <input type="text" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
+                </div>
+                <div class="grid grid-cols-10 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div>
+                        <p>No</p>
+                    </div>
+                    <div>
+                        <p>Name</p>
+                    </div>
+                    <div>
+                        <p>Destination</p>
+                    </div>
+                    <div>
+                        <p>Passport</p>
+                    </div>
+                    <div>
+                        <p>Boarding Passport</p>
+                    </div>
+                    <div>
+                        <p>Modem</p>
+                    </div>
+                    <div>
+                        <p>Plan</p>
+                    </div>
+                    <div>
+                        <p>Rental Time</p>
+                    </div>
+                    <div class="pe-2">
+                        <p>Rental Status</p>
+                    </div>
+                    <div>
+                        <p>Action</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-10 text-sm mt-5 gap-2">
+                    <div class="flex items-center">
+                        <p>1</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>John Doe</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Raja Ampat</p>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-picture="../podmatch.jpg">Lihat Gambar</button>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass">Lihat Gambar</button>
+                    </div>
+                    <div class="flex items-center">
+                        <p>N1</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Orbit MiFi 2GB (3 Days)</p>
+                    </div>
+                    <div>
+                        <p class="countdown"></p>
+                    </div>
+                    <div class="flex items-center">
+                        <p class="text-yellow-500">Rented</p>
+                    </div>
+                    <div>
+                        <a class="me-4 cursor-pointer editStatus"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="cursor-pointer"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-10 text-sm mt-5 gap-2">
+                    <div class="flex items-center">
+                        <p>2</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Walker James</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Raja Ampat</p>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport">Lihat Gambar</button>
+                    </div>
+                    <div class="flex items-center">
+                        <p>-</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>N1</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Orbit MiFi 2GB (3 Days)</p>
+                    </div>
+                    <div>
+                        <p class="countdown"></p>
+                    </div>
+                    <div class="flex items-center">
+                        <p class="text-green-500">Finished</p>
+                    </div>
+                    <div>
+                        <a class="me-4 cursor-pointer editStatus"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="cursor-pointer"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-10 text-sm mt-5 gap-2">
+                    <div class="flex items-center">
+                        <p>3</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Ronny Chan</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Sorong</p>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport">Lihat Gambar</button>
+                    </div>
+                    <div class="flex items-center">
+                        <p>-</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>N2</p>
+                    </div>
+                    <div class="flex items-center">
+                        <p>Orbit MiFi 2GB (3 Days)</p>
+                    </div>
+                    <div>
+                        <p class="countdown"></p>
+                    </div>
+                    <div class="flex items-center">
+                        <p class="text-green-500">Finished</p>
+                    </div>
+                    <div>
+                        <a class="me-4 cursor-pointer editStatus"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="cursor-pointer"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <dialog class="p-5 text-sm rounded-lg">
+        <div class="w-full">
+            <div class="text-end text-xl cursor-pointer" id="formCloseBtn"><i class="fa-solid fa-xmark"></i></div>
+            <h1 class="text-xl">John Doe</h1>
+        </div>
+        <form action="">
+            <div class="flex flex-col mt-5">
+                <label for="">Rental Status</label>
+                <select name="rentalStatus" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                    <option>Finished</option>
+                    <option>Rented</option>
+                    <option>Waiting</option>
+                    <option>Abort</option>
+                </select>
+            </div>
+            <button class="w-full p-2 bg-blue-500 text-white mt-5 rounded-sm hover:bg-blue-700 duration-500">Submit</button>
+        </form>
+    </dialog>
+
+    <dialog class="min-h-[350px] p-5" id="lihatImage">
+        <div class="text-end text-3xl cursor-pointer" id="closeBtn"><i class="fa-solid fa-xmark"></i></div>
+        <div class="mt-5">
+            <img src=""  alt="" id="modalImage" class="max-w-[400px]">
+        </div>
+    </dialog>
+
+    <script src="../apexcharts.min.js"></script>
+    <script>
+        var options = {
+            chart: {
+                type: 'bar',
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    borderRadius: 10
+                }
+            },
+            series: [{
+                    name: 'Order',
+                    data: [30,40,35,50, 32, 45]
+                },
+            ],
+            xaxis: {
+                categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+        var options = {
+        chart: {
+            type: 'bar',
+            stacked: true,
+            stackType: "100%",
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+                columnWidth: '55%'
+            }
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
+        },
+        tooltip: {
+            enabled: true
+        },
+        series: [
+            {
+                name: 'Rented Modems',
+                data: [12,39,21,50, 34, 40]
+            },
+            {
+                name: 'Available Modems',
+                data: [30,40,35,50, 21,45]
+            },
+        ],
+        xaxis: {
+            categories: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+        }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+
+        chart.render();
+
+        var options = {
+            colors: '0000FF',
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    columnWidth: '55%'
+                }
+            },
+            dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                    return val + "%";
+                }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            },
+            tooltip: {
+                enabled: true
+            },
+            series: [
+                {
+                    name: 'Rented Modems',
+                    data: [12,39,21,50, 34, 21, 12, 20]
+                }
+            ],
+            xaxis: {
+                show: false,
+                categories: ['Orbit MiFi 2GB (3 Days)', 'Orbit MiFi 6GB (3 Days)', 'Orbit MiFi 2.5GB (7 Days)', 'Orbit MiFi 12GB (7 Days)', 'Orbit MiFi 18GB (30 Days)', 'Orbit MiFi 50GB (30 Days)', 'Orbit MiFi 85GB (30 Days)', 'Orbit MiFi 120GB (30 Days)'],
+                labels: {
+                    show: false
+                }
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#planChart"), options);
+
+        chart.render();
+
+        var options = {
+            chart: {
+                type: 'pie',
+                height: 348
+            },
+            series: [44, 55, 41, 17, 15, 11],
+            labels: ['Raja Ampat', 'Sorong', 'Manokwari', 'Nabire', 'Fak-fak', 'Kaimana'],
+            dataLabels: {
+                enabled: true,
+                // formatter: function (val) {
+                //     return val + "%"
+                // }
+            },
+            plotOptions: {
+                pie: {
+                    customScale: 0.8,
+                }
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#destinationChart"), options);
+
+        chart.render();
+
+        const passport = document.querySelectorAll('.lihat-passport'); 
+        const boardingPassport = document.querySelectorAll('.lihat-boardingpass'); 
+        const modalImage = document.querySelector('#modalImage');
+        const closeBtn = document.querySelector('#closeBtn');
+        const formCloseBtn = document.querySelector('#formCloseBtn');
+        const modal = document.querySelectorAll('dialog');
+        const editStatus = document.querySelectorAll('.editStatus');
+
+        passport.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const data = e.target.dataset.picture;
+
+                modal[1].showModal();
+                modalImage.src = data;
+            });
+        });
+        boardingPassport.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const data = e.target.dataset.picture;
+
+                modal[1].showModal();
+                modalImage.src = data;
+            });
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            modal[1].close();
+        });
+
+        formCloseBtn.addEventListener('click', function(e){
+            modal[0].close();
+        })
+
+        editStatus.forEach(item => {
+            item.addEventListener('click', (e) => {
+                modal[0].showModal();
+            })
+        });
+                
+    </script>
+
+    <script>
+        // Set the rental start and end dates
+    const rentalStartDate = new Date('2024-05-26T00:00:00'); // Sunday, May 26, 2024
+    const rentalEndDate = new Date('2024-05-29T00:00:00'); // Sunday, June 2, 2024
+
+    // Calculate the total rental duration in milliseconds
+    const rentalDuration = rentalEndDate.getTime() - rentalStartDate.getTime();
+
+    // Create a function to update the countdown
+    function updateCountdown() {
+    const currentTime = new Date().getTime();
+    const timeLeft = rentalEndDate.getTime() - currentTime;
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(timeLeft % (1000 * 60 * 60 * 24) / (60 * 60 * 1000));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.querySelectorAll('.countdown').forEach(item => {
+            item.innerHTML = `${days > 9 ? '' : '0'}${days}:${hours > 9 ? '' : '0'}${hours}:${minutes > 9 ? '' : '0'}${minutes}:${seconds > 9 ? '' : '0'}${seconds}`;
+    });
+
+    // Check if the rental period has ended
+        if (timeLeft <= 0) {
+            clearInterval(intervalId);
+            document.querySelectorAll('.countdown').forEach(item => {
+                item.innerHTML = 'Times Up'
+            });
+        }
+    }
+
+    // Start the countdown
+    let intervalId = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    </script>
+</body>
+</html>

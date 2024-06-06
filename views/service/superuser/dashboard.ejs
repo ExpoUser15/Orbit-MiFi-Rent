@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../font.css">
+    <script src="https://kit.fontawesome.com/79df314047.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            font-family: "Poppins", sans-serif;
+        }
+        ::backdrop {
+            background-image: linear-gradient(
+                45deg,
+                rgb(16, 13, 16),
+                rgb(26, 24, 24),
+                rgb(21, 21, 21),
+                rgb(45, 47, 45)
+            );
+            opacity: 0.75;
+        }
+    </style>
+    <link rel="stylesheet" href="anim.css">
+    <title>Super User | Telkomsel</title>
+</head>
+<body>
+    <div class="w-full bg-slate-100">
+        <nav class="w-full h-16 flex items-center justify-end px-6 bg-slate-800 fixed z-20">
+            <a href="#" class="p-2 bg-red-600 text-white rounded-sm hover:bg-red-700 duration-500 text-sm">Logout</a>
+        </nav>
+
+        <aside class="w-60 h-screen bg-red-500 p-5 fixed z-[999] text-slate-200">
+            <img src="../telkomsel-logo.png" alt="" class="mb-8">
+            <h1 class="text-2xl font-semibold uppercase">Super User</h1>
+            <hr class="mt-5">
+            <div class="mt-24">
+                <ul class="h-32 flex flex-col justify-between">
+                    <li><a href="dashboard.html" class="text-slate-400 hover:text-slate-200 duration-500"><i class="fa-solid fa-gauge me-4"></i>Dashboard</a></li>
+                    <li><a href="users.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-users me-3"></i>Users</a></li>
+                    <li><a href="monitoring.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-eye me-3"></i>Monitoring</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="w-full h-full pe-10 ps-72 pt-32">
+            <h1 class="text-3xl mb-20 font-semibold">Dashboard</h1>
+            <div class="grid grid-cols-2 gap-5">
+                <div>
+                    <h1><i class="fa-solid fa-chart-column me-3"></i>Last Week's Rented Report</h1>
+                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="17/02/2024 - 24/02/2024" readonly>
+                    <div id="chart" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
+                </div>
+                <div>
+                    <h1><i class="fa-solid fa-plus me-3"></i>Available Modem Report</h1>
+                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="Year: 2024" readonly>
+                    <div id="chart2" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-5 mt-10">
+                <div class="col-span-7">
+                    <h1><i class="fa-solid fa-chart-pie me-3"></i>Most Visited Destination</h1>
+                    <div id="destinationChart" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
+                </div>
+                <div class="col-span-5">
+                    <h1><i class="fa-solid fa-chart-bar me-3"></i>Most choosen Plan</h1>
+                    <div id="planChart" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 mt-10 mb-10">
+                <div>
+                    <h1>Testimonials</h1>
+
+                    <div class="grid grid-cols-2 shadow-lg bg-white p-2 text-sm mt-5 min-h-[20px] overflow-auto">
+                        <div class="grid grid-cols-12">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../midas-hofstra-a6PMA5JEmWE-unsplash.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">John Doe</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../podmatch.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">Armin Matrutty</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 mt-10">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../ethan-rougon-uZBCgRDKsko-unsplash.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">Firgenius Hombore</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 mt-10">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../aurelien-thomas-XpejolzYGvc-unsplash.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">Romanus Sampono</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 mt-10">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../li-shanting-AGy0SxTzqr8-unsplash.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">Hannah James</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 mt-10">
+                            <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300">
+                                <img src="../roth-melinda-gOdqdhU9pWI-unsplash.jpg" alt="" class="w-16 m-auto">
+                            </div>
+                            <div class="col-span-10">
+                                <h1 class="font-medium">Clarissa Joven</h1>
+
+                                <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero amet repudiandae voluptates ipsa. Sit velit mollitia quo optio eius vel in? Labore alias rerum a adipisci, cum atque nobis sit!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../apexcharts.min.js"></script>
+    <script>
+        var options = {
+            chart: {
+                type: 'bar',
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    borderRadius: 10
+                }
+            },
+            series: [{
+                    name: 'Order',
+                    data: [30,40,35,50, 32, 45]
+                },
+            ],
+            xaxis: {
+                categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+        var options = {
+        chart: {
+            type: 'bar',
+            stacked: true,
+            stackType: "100%",
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+                columnWidth: '55%'
+            }
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
+        },
+        tooltip: {
+            enabled: true
+        },
+        series: [
+            {
+                name: 'Rented Modems',
+                data: [12,39,21,50, 34, 40]
+            },
+            {
+                name: 'Available Modems',
+                data: [30,40,35,50, 21,45]
+            },
+        ],
+        xaxis: {
+            categories: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+        }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+
+        chart.render();
+
+        var options = {
+            colors: '0000FF',
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    columnWidth: '55%'
+                }
+            },
+            dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                    return val + "%";
+                }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            },
+            tooltip: {
+                enabled: true
+            },
+            series: [
+                {
+                    name: 'Rented Modems',
+                    data: [12,39,21,50, 34, 21, 12, 20]
+                }
+            ],
+            xaxis: {
+                show: false,
+                categories: ['Orbit MiFi 2GB (3 Days)', 'Orbit MiFi 6GB (3 Days)', 'Orbit MiFi 2.5GB (7 Days)', 'Orbit MiFi 12GB (7 Days)', 'Orbit MiFi 18GB (30 Days)', 'Orbit MiFi 50GB (30 Days)', 'Orbit MiFi 85GB (30 Days)', 'Orbit MiFi 120GB (30 Days)'],
+                labels: {
+                    show: false
+                }
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#planChart"), options);
+
+        chart.render();
+
+        var options = {
+            chart: {
+                type: 'pie',
+                height: 348
+            },
+            series: [44, 55, 41, 17, 15, 11],
+            labels: ['Raja Ampat', 'Sorong', 'Manokwari', 'Nabire', 'Fak-fak', 'Kaimana'],
+            dataLabels: {
+                enabled: true,
+                // formatter: function (val) {
+                //     return val + "%"
+                // }
+            },
+            plotOptions: {
+                pie: {
+                    customScale: 0.8,
+                }
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#destinationChart"), options);
+
+        chart.render();
+        
+    </script>
+</body>
+</html>

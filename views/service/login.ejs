@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="assets/service/css/login.css">
+    <title>Login | Telkomsel</title>
+</head>
+
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="/login/payload" method="POST">
+                    <div class="login-head">
+                        <img src="assets/service/img/telkomsel-logo.png" alt="">
+                    </div>
+                    <h2>Login</h2>
+                        <% if (!success) { %>
+                            <div class="notif">
+                                <p>Username atau password salah!</p>
+                                <ion-icon name="close-outline" class="closeNotif"></ion-icon>
+                            </div>
+                        <% } else { %>
+                            <div></div>
+                        <% } %>
+                        <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="text" name="username" required>
+                            <label for="">Username</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" name="password" required>
+                            <label for="">Password</label>
+                        </div>
+                        <button type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const notif = document.querySelector('.closeNotif');
+
+        if (notif) {
+            notif.addEventListener('click', () => {
+                document.querySelector('.notif').remove();
+            })
+        }
+    </script>
+</body>
+
+</html>

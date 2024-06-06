@@ -1,0 +1,101 @@
+<div data-element="<%= data.notif ? data.notif.element : '' %>" data-success="<%= data.success %>" id="notif" class="bg-gradient-to-r <%= data.notif ? data.notif.class : '' %> w-[300px] p-2 rounded-lg m-auto fixed z-[9999] top-[80px] right-2 translate-x-[1000px] opacity-0 duration-1000 ease">
+        
+</div>
+
+<div id="sectionContainer">
+
+    <section class="overflow-hidden w-full bg-gradient-to-t to-[#1F0235] from-[#B8050A] pt-[80px] text-slate-100 pb-[50px] px-3 md:px-[50px] lg:px-[80px]">
+
+        <!-- <div class="loader"></div> -->
+
+        <form action="/rent/success" method="POST" class="p-5 shadow-lg rounded-sm w-full grid grid-cols-12 gap-5 lg:gap-8" style="background-color: rgba(255,255,255, 0.1);" enctype="multipart/form-data">
+            <h1 class="poppins-semibold text-4xl col-span-12">Rent Form</h1>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="name" class="text-sm duration-200 ease">Name <span class="text-red-400">*</span></label>
+                <input type="text" name="name"
+                    class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+            </div>
+            <div class="col-span-12 lg:col-span-6">
+                <label for="destination" class="text-sm duration-200 ease">Destination <span class="text-red-400">*</span></label>
+                <input type="text" name="destination"
+                    class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+            </div>
+            <div class="col-span-12 lg:col-span-6">
+                <label for="passport" class="text-sm">Passport <span class="text-red-400">*</span></label>
+                <input type="file" name="passport"
+                    class="py-2 text-[12px] poppins-light outline-none w-full required" multiple>
+                    <p class="italic text-[12px] poppins-light">Note: Please provide a photo of your passport and yourself with your passport.</p>
+            </div>
+            <div class="col-span-12 lg:col-span-6">
+                <label for="boardingpass" class="text-sm">Boarding Passport <span class="text-[12px]">(Optional)</span></label>
+                <input type="file" name="boardingpass"
+                    class="py-2 text-[12px] poppins-light outline-none w-full required">
+            </div>
+
+            <div class="col-span-12 ">
+                <h1 class="text-sm">Available Stock</h1>
+
+                <div class="grid grid-cols-2">
+                    <div class="w-full">
+                        <img src="assets/img/home/MIFI_N1-preview.png" class="w-[100px] lg:w-[150px] my-4" alt="">
+                        <div>
+                            <h1 class="text-sm">N1</h1>
+                            <div class="border-2 w-fit py-1 px-5"><%=  jumlah[0] %></div>
+                        </div>
+                    </div>
+                    <div class="w-full flex flex-col">
+                        <img src="assets/img/home/MIFI_N2-preview.png" class="w-[100px] lg:w-[150px] my-4" alt="">
+                        <div>
+                            <h1 class="text-sm">N2</h1>
+                            <div class="border-2 w-fit py-1 px-5"><%= jumlah[1] %></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="modem" class="text-sm">Choose Modem</label>
+                <select name="modem" class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+                    <option class="bg-[#0B0610]">N1</option>
+                    <option class="bg-[#0B0610]">N2</option>
+                </select>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="modemPrice" class="text-sm">Modem Price</label>
+                <input type="text" name="modemPrice" class="py-2 outline-none w-full text-[12px] poppins-light rounded-sm px-2 required" style="background-color: rgba(0,0,0, 0.6);" value="IDR 675,000" readonly>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="plan" class="text-sm">Choose a Plan</label>
+                <select name="plan" class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 2GB (3 Days)-P01">Orbit MiFi 2GB (3 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 6GB (3 Days)-P02">Orbit MiFi 6GB (3 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 2.5GB (7 Days)-P03">Orbit MiFi 2.5GB (7 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 12GB (7 Days)-P04">Orbit MiFi 12GB (7 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 18GB (30 Days)-P05">Orbit MiFi 18GB (30 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 50GB (30 Days)-P06">Orbit MiFi 50GB (30 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 85GB (30 Days)-P07">Orbit MiFi 85GB (30 Days)</option>
+                    <option class="bg-[#0B0610]" value="Orbit MiFi 120GB (30 Days)-P08">Orbit MiFi 120GB (30 Days)</option>
+                </select>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="price" class="text-sm">Price</label>
+                <input type="text" name="price" class="py-2 outline-none w-full text-[12px] poppins-light rounded-sm px-2 required" style="background-color: rgba(0,0,0, 0.6);" value="IDR 20,000" readonly>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6">
+                <label for="total" class="text-sm">Total Price</label>
+                <input type="text" name="total" class="py-2 outline-none w-full text-[12px] poppins-light rounded-sm px-2 required" style="background-color: rgba(0,0,0, 0.6);" readonly>
+            </div>
+
+            <button class="col-span-12 p-2 px-4 w-[200px] rounded-sm bg-[#0047FF] mt-4 hover:bg-blue-900 duration-300 ease submit-btn" type="submit">Submit</button>
+            
+        </form>
+    </section>
+
+    <%- include('../layouts/footer') %>
+
+</div>

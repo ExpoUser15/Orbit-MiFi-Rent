@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="countdown"></h1>
+
+    <script>
+        // Set the rental start and end dates
+const rentalStartDate = new Date('2024-05-26T00:00:00'); // Sunday, May 26, 2024
+const rentalEndDate = new Date('2024-05-26T00:00:00'); // Sunday, June 2, 2024
+
+// Calculate the total rental duration in milliseconds
+const rentalDuration = rentalEndDate.getTime() - rentalStartDate.getTime();
+
+// Create a function to update the countdown
+function updateCountdown() {
+  const currentTime = new Date().getTime();
+  const timeLeft = rentalEndDate.getTime() - currentTime;
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(timeLeft % (1000 * 60 * 60 * 24) / (60 * 60 * 1000));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  // Update the countdown display
+  document.getElementById('countdown').innerHTML = `${days > 9 ? '' : '0'}${days}:${hours > 9 ? '' : '0'}${hours}:${minutes > 9 ? '' : '0'}${minutes}:${seconds > 9 ? '' : '0'}${seconds}`;
+
+  // Check if the rental period has ended
+  if (timeLeft <= 0) {
+    clearInterval(intervalId);
+    document.getElementById('countdown').innerHTML = 'Rental period has ended!';
+  }
+}
+
+// Start the countdown
+let intervalId = setInterval(updateCountdown, 1000);
+updateCountdown();
+    </script>
+  </body>
+</html>

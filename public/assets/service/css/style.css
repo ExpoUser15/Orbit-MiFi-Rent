@@ -1,0 +1,13 @@
+.animated-input {
+    @apply transition-all duration-300 ease-in-out;
+    @apply border border-gray-300 rounded-md py-2 px-3;
+    @apply focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500;
+  }
+  
+  .animated-input:focus {
+    @apply shadow-md;
+  }
+  
+  .animated-input:hover {
+    @apply border-pink-500;
+  }
