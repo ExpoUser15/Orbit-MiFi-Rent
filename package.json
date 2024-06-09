@@ -25,9 +25,10 @@
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.3",
     "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.4"
   }
 }

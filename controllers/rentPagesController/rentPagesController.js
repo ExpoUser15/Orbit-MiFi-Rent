@@ -1,4 +1,5 @@
 const { QueryTypes } = require('sequelize');
+const socketClient = require('socket.io-client');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../../config/db');
 const rentalSchema = require('../../models/rentalSchema');
@@ -8,14 +9,18 @@ const notification = require("../../utils/notification");
 const {formattedDate, finishDate} = require("../../utils/date");
 
 let success = false;
-let countData = 0;
 
-const homeController = (req, res) => {
+const homeController = async (req, res) => {
 
     const path = req.path;
 
+    const testimoni = await sequelize.query('SELECT name, testimonial, text FROM tb_testimonials ORDER BY createdAt DESC LIMIT 3', {
+        type: QueryTypes.SELECT
+    });
+
     const data = {
         path,
+        testimoni
     };
 
     res.render('index.ejs', { data });
@@ -24,11 +29,14 @@ const homeController = (req, res) => {
 const rentController = async (req, res) => {
     const io = req.app.get('socketio');
     const path = req.path;
-
-    io.of('/rent').on('connection', (socket) => {
-        console.log('Socket Connected to penyedia!: ', socket.id);
-        socket.emit('jumlahPesanan', { countData });
+    
+    const server1Socket = socketClient('http://localhost:7777/penyedia');
+    
+    server1Socket.on('connect', async () => {
+        server1Socket.emit('message', { request: true });
     });
+
+    server1Socket.emit('message', { request: true });
 
     const jenisModem = await stokSchema.findAll();
 
@@ -39,7 +47,7 @@ const rentController = async (req, res) => {
     };
 
     if (success === true) {
-        const { notif } = notification('Form saved successfully', 'checked_190411.png', 'from-sky-300 to-blue-400');
+        const { notif } = notification('Form saved successfully', 'checked_190411.png', 'from-blue-300 to-blue-400');
         success = false;
         return res.render('index.ejs', { data: { path, notif, success: true }, jumlah: dataValues });
     } else if (success === 'not images') {
@@ -69,7 +77,7 @@ const rentPostController = async (req, res) => {
     const extract = files.passport.map(item => item.filename);
     const joinFilename = extract.join(' - 2');
 
-    if (!body.name || !body.destination || !files.passport || !body.modem || !body.plan || !body.modemPrice || !body.price || !body.total) {
+    if (!body.name || !body.destination || !files.passport || !body.modem || !body.plan || !body.modemPrice || !body.price || !body.total || !body.email) {
         success = false;
 
         return res.redirect('/rent');
@@ -115,6 +123,7 @@ const rentPostController = async (req, res) => {
                 id: uuid,
                 name: body.name,
                 destination: body.destination,
+                email: body.email,
                 passport: joinFilename,
                 boarding_passport: files.boardingpass ? files.boardingpass[0].filename : '-',
                 modem: body.modem === 'N1' ? 'N101' : 'N202',
@@ -129,15 +138,6 @@ const rentPostController = async (req, res) => {
                 .sync()
                 .then(() => {
                     console.log("Synchronizing Succesfully");
-
-                    // menghitung jumlah pesanan
-                    rentalSchema.count()
-                    .then((count) => {
-                        if(count){
-                            countData = count;
-                        }
-                    });
-
                     success = true;
                 })
                 .catch((error) => {

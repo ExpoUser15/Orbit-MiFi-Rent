@@ -4,7 +4,7 @@ const { penyediaController } = require('../../controllers/serviceController/peny
 const { loginController, loginPostController, logout } = require('../../controllers/serviceController/loginController');
 const { authMiddleware } = require('../../middleware/authController');
 const { fasilitatorController } = require('../../controllers/serviceController/fasilitatorController');
-const { monitoringController } = require('../../controllers/superUserController/monitoringController');
+const { monitoringController } = require('../../controllers/serviceController/superUserController/monitoringController');
 
 serviceRouter.get('/login', loginController);
 serviceRouter.post('/login/payload', loginPostController);

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const rentRouter = require('./router/rentRouter/router');
 const serviceRouter = require('./router/serviceRouter/router');
+const handlePenyediaSocketConnection = require('./middleware/socket/socketPenyedia');
+const rentalSchema = require('./models/rentalSchema');
 
 require('dotenv').config();
 
@@ -18,11 +20,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rentRouter);
 app.use(serviceRouter);
 
-// io.on('connection', (socket) => {
-//     console.log('Socket connected: ', socket.id);
+io.on('connection', async (socket) => {
+    handlePenyediaSocketConnection(socket);
+});
 
-//     socket.emit('jumlahPesanan', 'data');
-// })
+let request;
+
+io.of('/penyedia').on('connection', async (socket) => {
+    socket.on('message', (data) => {
+        request = data.request;
+    });
+
+    if(request){
+        const countData = await rentalSchema.count();
+        io.of('/penyedia').emit('jumlahPesanan', { countData });
+        request = null;
+    }
+});
 
 http.listen('7777', () => {
     console.log('Server running on port 7777');
