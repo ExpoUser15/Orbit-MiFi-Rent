@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 12:23 AM
+-- Generation Time: Jun 09, 2024 at 05:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,6 +47,28 @@ INSERT INTO `tb_contacts` (`contact_id`, `name`, `email`, `message`, `phone`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_locations`
+--
+
+CREATE TABLE `tb_locations` (
+  `location_id` varchar(5) NOT NULL,
+  `location` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_locations`
+--
+
+INSERT INTO `tb_locations` (`location_id`, `location`) VALUES
+('L01', 'Sorong'),
+('L02', 'Raja Ampat'),
+('L03', 'Tambrauw'),
+('L04', 'Teminabuan'),
+('L05', 'Maybrat');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_plan`
 --
 
@@ -81,6 +103,7 @@ CREATE TABLE `tb_rentals` (
   `id` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `destination` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `passport` varchar(100) NOT NULL,
   `boarding_passport` varchar(100) DEFAULT NULL,
   `modem` varchar(4) NOT NULL,
@@ -95,30 +118,8 @@ CREATE TABLE `tb_rentals` (
 -- Dumping data for table `tb_rentals`
 --
 
-INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `passport`, `boarding_passport`, `modem`, `plan`, `total_price`, `status`, `startAt`, `finishAt`) VALUES
-('1c5e9b8d-e1c5-4283-8855-32fddff95b74', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717686080953.png - 2passport-1717686080955.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-07', '2024-06-10'),
-('1ff88c8c-c9d5-422b-ac66-104ef4b8aa20', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717645046729.png - 2passport-1717645046731.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('21f7d6dc-f3a4-433e-bc86-2956ee9bff3e', 'Gideon Marchell', 'Raja ampat', 'passport-1717642144328.png - 2passport-1717642144333.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('25c33878-d09c-4627-b9a4-a0d73e9f5e04', 'assad', 'Manokwari', 'passport-1717642236053.png - 2passport-1717642236060.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('28f0b25f-7e68-45f9-a3fe-1e29c306cb1c', 'Gideon', 'Raja ampat', 'passport-1717330208164.jpg - 2passport-1717330208169.png', 'boardingpass-1717330208182.png', 'N101', 'P08', 'IDR 1,150,000', 'In Progress', '2024-06-02', '2024-07-02'),
-('2a6ca73d-71cb-4407-96be-9569b99c30ea', 'Gideon Marchelino Manobi', 'Sorong', 'passport-1717638750645.jpg - 2passport-1717638750648.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('31c29144-d72d-47cd-a872-c9d582b25c31', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717680466402.png - 2passport-1717680466404.png', '-', 'N101', 'P07', 'IDR 1,035,000', 'In Progress', '2024-06-06', '2024-07-06'),
-('48eca1b8-d252-4e66-b194-6716559ca68a', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717685326865.png - 2passport-1717685326867.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('491a50b0-605a-47d9-8aef-e812399dfc2b', 'assad', 'Manokwari', 'passport-1717642333004.png - 2passport-1717642333005.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('4da839d8-7dd5-45d9-8bf5-156deba28d71', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717685418065.png - 2passport-1717685418073.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('6241615f-0681-4ea8-90da-1d8f208480cb', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717686143054.jpg - 2passport-1717686143058.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-07', '2024-06-10'),
-('65009378-2c93-4ca7-86da-520e8d41fe85', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684769897.png - 2passport-1717684769903.jpg', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('6a81c99b-3697-4a90-ba7d-acc91ddc27df', '\'saran\',\'kritik\',\'lainnya\'', 'Raja ampat', 'passport-1717641275256.jpg - 2passport-1717641275268.png', '-', 'N101', 'P05', 'IDR 790,000', 'In Progress', '2024-06-06', '2024-07-06'),
-('941af057-668f-4ea0-849f-1b77f4ecebb1', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684502228.png - 2passport-1717684502232.jpg', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('95955b8c-2bb2-47e5-b4fd-6b7d0ec4f1a8', 'marchelino', 'Bintuni', 'passport-1717330235669.png - 2passport-1717330235672.jpg', 'boardingpass-1717330235678.png', 'N101', 'P04', 'IDR 750,000', 'In Progress', '2024-06-02', '2024-06-09'),
-('9964c909-2522-4d91-8859-c20f235d5308', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717686175779.jpg - 2passport-1717686175781.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-07', '2024-06-10'),
-('9cbf188f-5f08-45f5-bfdc-90b6bb0cf8cf', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684110040.png - 2passport-1717684110045.png', '-', 'N202', 'P01', 'IDR 720,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('afe2c972-8b86-44c2-a92f-83e90eb2ce3c', 'marchelino', 'Bintuni', 'passport-1717638474113.jpg - 2passport-1717638474183.PNG', 'boardingpass-1717638474206.jpg', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('b1e42174-cfed-48d2-8f87-7414a632081d', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684455237.png - 2passport-1717684455242.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('c1241252-e559-40f5-bfa0-647e9c1b854e', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684686881.png - 2passport-1717684686890.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('d4e27bde-0378-4e4b-9779-4fe49c8f4db4', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717684968682.png - 2passport-1717684968687.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('eedfe41f-6831-479c-948c-54c7bbde0686', 'Gideon Marchelino Manobi', 'Raja ampat', 'passport-1717645006558.png - 2passport-1717645006565.png', '-', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-06', '2024-06-09'),
-('fede31be-3644-40c0-b098-83b91393f66a', 'JEff', 'Raja ampat', 'passport-1717640193514.png - 2passport-1717640193526.jpg', '-', 'N202', 'P06', 'IDR 940,000', 'In Progress', '2024-06-06', '2024-07-06');
+INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `email`, `passport`, `boarding_passport`, `modem`, `plan`, `total_price`, `status`, `startAt`, `finishAt`) VALUES
+('fc46007c-aed0-476d-8694-ef30146315a7', 'Gideon Marchell', 'Sorong', 'marchellmanobi@gmail.com', 'passport-1717922544360.PNG - 2passport-1717922544361.jpg', 'boardingpass-1717922544366.png', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-09', '2024-06-12');
 
 -- --------------------------------------------------------
 
@@ -138,8 +139,32 @@ CREATE TABLE `tb_stoks` (
 --
 
 INSERT INTO `tb_stoks` (`modem_id`, `jenis_modem`, `jumlah`, `price`) VALUES
-('N101', 'N1', 7, 'IDR 675,000'),
-('N202', 'N2', 12, 'IDR 700,000');
+('N101', 'N1', 10, 'IDR 675,000'),
+('N202', 'N2', 5, 'IDR 700,000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_testimonials`
+--
+
+CREATE TABLE `tb_testimonials` (
+  `testimonial_id` varchar(255) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `testimonial` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `createdAt` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_testimonials`
+--
+
+INSERT INTO `tb_testimonials` (`testimonial_id`, `name`, `testimonial`, `text`, `createdAt`) VALUES
+('adsfafa', 'Clarissa', 'photo3.jpg', 'playsinline adalah atribut pada elemen <video> dalam HTML. Atribut ini digunakan untuk mengontrol perilaku pemutaran video di halaman web, khususnya pada perangkat seluler. Ketika playsinline ditambahkan ke elemen <video>, itu menunjukkan bahwa video tersebut harus dimainkan dalam konteks pemutaran di dalam elemen HTML itu sendiri, bukan dalam pemutar video penuh layar yang terpisah.', '2024-06-01'),
+('ffafsfasf', 'Doni', 'photo.jpg', 'Test aj', '2024-01-03'),
+('fsdcs', 'Jennifer', 'photo.jpg', 'Transmisi multi arah mengacu pada kemampuan sistem untuk mentransmisikan data atau informasi ke beberapa penerima atau dari beberapa pengirim secara bersamaan. Ini memungkinkan pertukaran informasi antara beberapa titik atau perangkat dalam jaringan yang saling terhubung. Sistem transmisi multi arah sering digunakan dalam komunikasi nirkabel, jaringan komputer, dan aplikasi lain di mana adanya pertukaran data yang saling terkait antara berbagai entitas.', '2024-04-02'),
+('kslksdads', 'Gideon', 'photo2.jpg', 'Untuk mengonversi nilai ke tipe data number di JavaScript, terdapat beberapa metode yang bisa digunakan tergantung pada jenis nilai yang ingin dikonversi dan situasi spesifiknya. ', '2024-05-21');
 
 -- --------------------------------------------------------
 
@@ -173,6 +198,12 @@ ALTER TABLE `tb_contacts`
   ADD PRIMARY KEY (`contact_id`);
 
 --
+-- Indexes for table `tb_locations`
+--
+ALTER TABLE `tb_locations`
+  ADD PRIMARY KEY (`location_id`);
+
+--
 -- Indexes for table `tb_plan`
 --
 ALTER TABLE `tb_plan`
@@ -189,6 +220,12 @@ ALTER TABLE `tb_rentals`
 --
 ALTER TABLE `tb_stoks`
   ADD PRIMARY KEY (`modem_id`);
+
+--
+-- Indexes for table `tb_testimonials`
+--
+ALTER TABLE `tb_testimonials`
+  ADD PRIMARY KEY (`testimonial_id`);
 
 --
 -- Indexes for table `tb_users`
