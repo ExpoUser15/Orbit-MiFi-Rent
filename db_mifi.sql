@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 05:40 PM
+-- Generation Time: Jun 23, 2024 at 05:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -103,7 +103,6 @@ CREATE TABLE `tb_rentals` (
   `id` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `destination` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
   `passport` varchar(100) NOT NULL,
   `boarding_passport` varchar(100) DEFAULT NULL,
   `modem` varchar(4) NOT NULL,
@@ -118,8 +117,12 @@ CREATE TABLE `tb_rentals` (
 -- Dumping data for table `tb_rentals`
 --
 
-INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `email`, `passport`, `boarding_passport`, `modem`, `plan`, `total_price`, `status`, `startAt`, `finishAt`) VALUES
-('fc46007c-aed0-476d-8694-ef30146315a7', 'Gideon Marchell', 'Sorong', 'marchellmanobi@gmail.com', 'passport-1717922544360.PNG - 2passport-1717922544361.jpg', 'boardingpass-1717922544366.png', 'N101', 'P01', 'IDR 695,000', 'In Progress', '2024-06-09', '2024-06-12');
+INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `passport`, `boarding_passport`, `modem`, `plan`, `total_price`, `status`, `startAt`, `finishAt`) VALUES
+('10e52cf1-82e2-4a0d-bc17-f055a88cc986', 'Wu Xing jin', 'Raja ampat', 'passport-1719108884712.jpg - passport-1719108884716.png', 'boardingpass-1719108884721.jpg', 'N101', 'P04', 'IDR 750,000', 'Finished', '2024-06-23 11:14:44', '2024-06-30 11:14:44'),
+('2e9dc758-1b92-48a0-8e30-5ba57f285827', 'Jeff', 'Raja ampat', 'passport-1719108692698.png - passport-1719108692709.jpg', '-', 'N101', 'P01', 'IDR 695,000', 'Finished', '2024-06-23 11:11:32', '2024-06-26 11:11:32'),
+('4fd88dc7-ebd2-481f-8ab4-5052464cc61a', 'Juan Perez', 'Sorong', 'passport-1719108857465.jpg - passport-1719108857465.png', '-', 'N202', 'P08', 'IDR 1,175,000', 'Finished', '2024-06-23 11:14:17', '2024-07-23 11:14:17'),
+('518e4485-6427-4251-91a0-4506693f4611', 'Hong Ju', 'Raja ampat', 'passport-1719108930815.PNG - passport-1719108930824.png', '-', 'N101', 'P01', 'IDR 695,000', 'Finished', '2024-06-23 11:15:30', '2024-06-26 11:15:30'),
+('bedf54df-dbef-492b-8000-16c103440ec2', 'Gideon Marchell', 'Raja ampat', 'passport-1719108678668.png - passport-1719108678676.png', '-', 'N101', 'P01', 'IDR 695,000', 'Finished', '2024-06-23 11:11:18', '2024-06-26 11:11:18');
 
 -- --------------------------------------------------------
 
@@ -139,8 +142,8 @@ CREATE TABLE `tb_stoks` (
 --
 
 INSERT INTO `tb_stoks` (`modem_id`, `jenis_modem`, `jumlah`, `price`) VALUES
-('N101', 'N1', 10, 'IDR 675,000'),
-('N202', 'N2', 5, 'IDR 700,000');
+('N101', 'N1', 16, 'IDR 675,000'),
+('N202', 'N2', 11, 'IDR 700,000');
 
 -- --------------------------------------------------------
 
@@ -184,8 +187,9 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `username`, `password`, `user_level`) VALUES
-(1, 'Gideon', '123', 'PENYEDIA'),
-(2, 'Donn', '111', 'FASILITATOR');
+(1, 'Gideon', '123', 'SUPERUSER'),
+(3, 'admin', '$2b$10$gX7L5RohgciC6N8/Gq84wOrGT.bLZ0DAzCFptYGp2EpHsQDcHrFL.', 'SUPERUSER'),
+(5, 'Jessy', '$2b$10$BLTFFVqUEuyO2C0KPHYxHu.JXpZmzqa/SY8WfEZ35dLN40ZX6W..u', 'PENYEDIA');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +245,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
