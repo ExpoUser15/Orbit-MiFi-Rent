@@ -2,7 +2,6 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const { homeController, rentController, aboutController, contactController, contactPostController, rentPostController } = require('../../controllers/rentPagesController/rentPagesController');
-const errorController = require('../../controllers/errorController');  
 const rentRouter = express.Router();
 
 const storage = multer.diskStorage({
@@ -24,8 +23,7 @@ rentRouter.get('/', homeController);
 rentRouter.get('/rent', rentController);
 rentRouter.get('/about', aboutController);
 rentRouter.get('/contact', contactController);
-rentRouter.get('/error', errorController);
 rentRouter.post('/contact/success', contactPostController);
-rentRouter.post('/rent/success', upload.fields([{ name: 'passport', maxCount: 2 }, { name: 'boardingpass', maxCount: 1 }]), rentPostController);
+rentRouter.post('/rent/success', upload.fields([{ name: 'passport', maxCount: 10 }, { name: 'boardingpass', maxCount: 1 }]), rentPostController);
 
 module.exports = rentRouter;

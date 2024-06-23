@@ -1,49 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../font.css">
-    <script src="https://kit.fontawesome.com/79df314047.js" crossorigin="anonymous"></script>
-    <style>
-        *{
-            font-family: "Poppins", sans-serif;
-        }
-        ::backdrop {
-            background-image: linear-gradient(
-                45deg,
-                rgb(16, 13, 16),
-                rgb(26, 24, 24),
-                rgb(21, 21, 21),
-                rgb(45, 47, 45)
-            );
-            opacity: 0.75;
-        }
-    </style>
-    <title>Super User | Telkomsel</title>
-</head>
-<body>
+<%- include('structure/head') %>
     <div class="w-full bg-slate-100">
-        <nav class="w-full h-16 flex items-center justify-end px-6 bg-slate-800 fixed z-20">
-            <a href="#" class="p-2 bg-red-600 text-white rounded-sm hover:bg-red-700 duration-500 text-sm">Logout</a>
-        </nav>
+        <%- include('layout/navbar') %>
 
-        <aside class="w-60 h-screen bg-red-500 p-5 fixed z-[999] text-slate-200">
-            <img src="../telkomsel-logo.png" alt="" class="mb-8">
-            <h1 class="text-2xl font-semibold uppercase">Super User</h1>
-            <hr class="mt-5">
-            <div class="mt-24">
-                <ul class="h-32 flex flex-col justify-between">
-                    <li><a href="dashboard.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-gauge me-4"></i>Dashboard</a></li>
-                    <li><a href="users.html" class="hover:text-slate-400 duration-500"><i class="fa-solid fa-users me-3"></i>Users</a></li>
-                    <li><a href="monitoring.html" class="text-slate-400 hover:text-slate-200 duration-500"><i class="fa-solid fa-eye me-3"></i>Monitoring</a></li>
-                </ul>
-            </div>
-        </aside>
+        <%- include('layout/sidebar') %>
 
         <section id="rental" class="pe-10 ps-72 pt-32 mb-10">
             <h1 class="text-3xl font-semibold">Users</h1>
@@ -65,23 +24,26 @@
                         <p>Action</p>
                     </div>
                 </div>
+                <% let no = 1 %>
+                <% for(item of data){ %>
                 <div class="grid grid-cols-4 text-sm mt-5">
                     <div class="flex items-center">
-                        <p>1</p>
+                        <p><%= no++ %></p>
                     </div>
                     <div class="flex items-center">
-                        <p>Jefri</p>
+                        <p><%= item.username %></p>
                     </div>
                     <div class="flex items-center">
-                        <p>Penyedia</p>
+                        <p><%= item.user_level %></p>
                     </div>
                     <div>
-                        <a class="me-4 cursor-pointer lihat-formEdit"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a class="cursor-pointer"><i class="fa-solid fa-trash"></i></a>
+                        <a class="me-4 cursor-pointer lihat-formEdit"><i data-name="<%= item.username %>" data-id="<%= item.id %>" class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="cursor-pointer" href="/superuser/users/delete/<%= item.id %>"><i class="fa-solid fa-trash"></i></a>
                     </div>
                 </div>
+                <% } %>
             </div>
-            <a href="/adduser" class="p-2 bg-blue-500 rounded-sm text-white mt-5">Add User <i class="fa-solid fa-plus ms-2"></i></a>
+            <a class="p-2 bg-blue-500 rounded-sm text-white mt-5 cursor-pointer add-user">Add User <i class="fa-solid fa-plus ms-2"></i></a>
 
         </section>
     </div>
@@ -89,38 +51,80 @@
     <dialog class="p-5 text-sm rounded-lg">
         <div class="w-full">
             <div class="text-end text-xl cursor-pointer" id="formCloseBtn"><i class="fa-solid fa-xmark"></i></div>
-            <h1 class="text-xl">John Doe</h1>
+            <h1 class="text-xl username"></h1>
         </div>
-        <form action="">
+        <form action="/superuser/users/update" method="POST">
             <div class="flex flex-col mt-5">
-                <label for="">Username</label>
-                <input type="text" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
             </div>
+            <input type="hidden" name="id">
             <div class="flex flex-col mt-5">
-                <label for="">User Level</label>
+                <label for="user_level">User Level</label>
                 <select name="user_level" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
-                    <option>Penyedia</option>
-                    <option>Fasilitator</option>
-                    <option>Super User</option>
+                    <option>PENYEDIA</option>
+                    <option>FASILITATOR</option>
+                    <option>SUPERUSER</option>
                 </select>
             </div>
-            <button class="w-full p-2 bg-blue-500 text-white mt-5 rounded-sm hover:bg-blue-700 duration-500">Submit</button>
+            <button class="w-full p-2 bg-blue-500 text-white mt-5 rounded-sm hover:bg-blue-700 duration-500" type="submit">Submit</button>
         </form>
     </dialog>
 
+    <dialog class="p-5 text-sm rounded-lg">
+        <div class="w-full">
+            <div class="text-end text-xl cursor-pointer" id="closeBtn"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <form action="/superuser/users/add" method="POST">
+            <div class="flex flex-col mt-5">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="user_level">User Level</label>
+                <select name="user_level" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                    <option>PENYEDIA</option>
+                    <option>FASILITATOR</option>
+                    <option>SUPERUSER</option>
+                </select>
+            </div>
+            <button class="w-full p-2 bg-blue-500 text-white mt-5 rounded-sm hover:bg-blue-700 duration-500" type="submit">Submit</button>
+        </form>
+    </dialog>
+
+
     <script>
         const formEdit = document.querySelectorAll('.lihat-formEdit');  
+        const addUserBtn = document.querySelector('.add-user');
         const formCloseBtn = document.querySelector('#formCloseBtn');
+        const closeBtn = document.querySelector('#closeBtn');
         const modal = document.querySelectorAll('dialog');
 
         formEdit.forEach(item => {
-            modal[0].showModal();
+            item.addEventListener('click', (e) => {
+                modal[0].showModal();
+                const username = document.querySelector('.username');
+                username.textContent = e.target.dataset.name;
+                document.querySelector('input[name="id"]').value = e.target.dataset.id;
+                document.querySelector('input[name="username"]').value = e.target.dataset.name;
+            })
         });
 
         formCloseBtn.addEventListener('click', function(e){
             modal[0].close();
-        })
+        });
+
+        addUserBtn.addEventListener('click', () => {
+            modal[1].showModal();
+        });
+
+        closeBtn.addEventListener('click', function(e){
+            modal[1].close();
+        });
     </script>
 
-</body>
-</html>
+<%- include('structure/footer') %>

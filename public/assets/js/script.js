@@ -29,7 +29,7 @@ sliderBtn.forEach(item => {
   item.addEventListener('click', (e) => {
     const num = e.target.dataset.num;
 
-    let sliderNum;
+    let sliderNum = '1';
 
     sliderBtn.forEach(el => {
       if(activeCard === el.dataset.num){
@@ -40,12 +40,15 @@ sliderBtn.forEach(item => {
     });
 
     testiCard.forEach(el => {
-      if(sliderNum !== el.dataset.id){
-        console.log(el)
-        el.classList.replace('block', 'hidden');
-      }else{
-        el.classList.replace('hidden', 'block');
-      }
+        if(el.classList.contains('block')){
+          el.classList.replace('block', 'hidden');
+          console.log(el.dataset.id);
+          console.log('Ini num ', num);
+        }
+        if(el.dataset.id === num){
+          console.log(el.dataset);
+          el.classList.replace('hidden', 'block');
+        }
     });
 
     item.classList.replace('w-4', 'w-7');
@@ -71,4 +74,4 @@ seeBtn.forEach(item => {
 
 closeSeeBtn.addEventListener('click', () => {
   modal.close();
-})
+});

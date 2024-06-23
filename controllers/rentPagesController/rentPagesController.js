@@ -1,5 +1,4 @@
 const { QueryTypes } = require('sequelize');
-const socketClient = require('socket.io-client');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../../config/db');
 const rentalSchema = require('../../models/rentalSchema');
@@ -27,16 +26,7 @@ const homeController = async (req, res) => {
 }
 
 const rentController = async (req, res) => {
-    const io = req.app.get('socketio');
     const path = req.path;
-    
-    const server1Socket = socketClient('http://localhost:7777/penyedia');
-    
-    server1Socket.on('connect', async () => {
-        server1Socket.emit('message', { request: true });
-    });
-
-    server1Socket.emit('message', { request: true });
 
     const jenisModem = await stokSchema.findAll();
 
@@ -68,22 +58,30 @@ const rentController = async (req, res) => {
 }
 
 const rentPostController = async (req, res) => {
-    const io = req.app.get('socketio');
     const body = req.body
     const files = req.files
 
     const uuid = uuidv4();
 
-    const extract = files.passport.map(item => item.filename);
-    const joinFilename = extract.join(' - 2');
+    let extract;
+    
+    if(!files.passport){
+        success = 'limit error';
 
-    if (!body.name || !body.destination || !files.passport || !body.modem || !body.plan || !body.modemPrice || !body.price || !body.total || !body.email) {
+        return res.redirect('/rent');
+    }else{
+        extract = files.passport.map(item => item.filename);
+    }
+
+    const joinFilename = extract.join(' - ');
+
+    if (!body.name || !body.destination || !files.passport || !body.modem || !body.plan || !body.modemPrice || !body.price || !body.total) {
         success = false;
 
         return res.redirect('/rent');
     }
 
-    if (files.passport.length < 2) {
+    if (files.passport.length < 2 || files.passport.length > 2) {
         success = 'limit error';
 
         return res.redirect('/rent');
@@ -123,7 +121,6 @@ const rentPostController = async (req, res) => {
                 id: uuid,
                 name: body.name,
                 destination: body.destination,
-                email: body.email,
                 passport: joinFilename,
                 boarding_passport: files.boardingpass ? files.boardingpass[0].filename : '-',
                 modem: body.modem === 'N1' ? 'N101' : 'N202',
