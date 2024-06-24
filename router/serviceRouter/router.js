@@ -7,7 +7,9 @@ const { fasilitatorController } = require('../../controllers/serviceController/f
 const { monitoringController } = require('../../controllers/serviceController/superUserController/monitoringController');
 const { dashboardController } = require('../../controllers/serviceController/superUserController/dashboardController');
 const { searchController, statusUpdateController, statusDeleteController } = require('../../controllers/serviceController/actionController');
-const { usersController, updateUserController, deleteUserController, addUserController } = require('../../controllers/serviceController/superUserController/usersController');
+const { usersController, updateUserController, deleteUserController, addUserController, searchUsersController } = require('../../controllers/serviceController/superUserController/usersController');
+const { testimonialsController, addTestimonialController, deleteTestimonialController } = require('../../controllers/serviceController/superUserController/testimonialsController');
+const upload = require('../../middleware/testimonialsFileManager');
 
 serviceRouter.get('/login', loginController);
 serviceRouter.get('/penyedia', penyediaController);
@@ -19,14 +21,18 @@ serviceRouter.get('/superuser/monitoring/delete/status/:id', statusDeleteControl
 serviceRouter.get('/superuser', dashboardController);
 serviceRouter.get('/superuser/monitoring', monitoringController);
 serviceRouter.get('/superuser/users', usersController);
+serviceRouter.get('/superuser/testimonial', testimonialsController);
+serviceRouter.get('/superuser/testimonial/delete/:id', deleteTestimonialController);
 serviceRouter.get('/logout', logout);
 
 serviceRouter.post('/login/payload', loginPostController);
 serviceRouter.post('/fasilitator/in-progress/search', searchController);
 serviceRouter.post('/search/:status', searchController);
+serviceRouter.post('/search/users/:id', searchUsersController);
 serviceRouter.post('/penyedia/action', tambahModemController);
 serviceRouter.post('/superuser/users/update', updateUserController);
 serviceRouter.post('/superuser/users/add', addUserController);
+serviceRouter.post('/superuser/testimonial/add', upload.fields([{ name: 'testimonial', maxCount: 1 }]), addTestimonialController);
 
 serviceRouter.get('/superuser/users/delete/:id', deleteUserController);
 

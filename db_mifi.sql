@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 05:08 PM
+-- Generation Time: Jun 24, 2024 at 07:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -164,10 +164,16 @@ CREATE TABLE `tb_testimonials` (
 --
 
 INSERT INTO `tb_testimonials` (`testimonial_id`, `name`, `testimonial`, `text`, `createdAt`) VALUES
-('adsfafa', 'Clarissa', 'photo3.jpg', 'playsinline adalah atribut pada elemen <video> dalam HTML. Atribut ini digunakan untuk mengontrol perilaku pemutaran video di halaman web, khususnya pada perangkat seluler. Ketika playsinline ditambahkan ke elemen <video>, itu menunjukkan bahwa video tersebut harus dimainkan dalam konteks pemutaran di dalam elemen HTML itu sendiri, bukan dalam pemutar video penuh layar yang terpisah.', '2024-06-01'),
-('ffafsfasf', 'Doni', 'photo.jpg', 'Test aj', '2024-01-03'),
-('fsdcs', 'Jennifer', 'photo.jpg', 'Transmisi multi arah mengacu pada kemampuan sistem untuk mentransmisikan data atau informasi ke beberapa penerima atau dari beberapa pengirim secara bersamaan. Ini memungkinkan pertukaran informasi antara beberapa titik atau perangkat dalam jaringan yang saling terhubung. Sistem transmisi multi arah sering digunakan dalam komunikasi nirkabel, jaringan komputer, dan aplikasi lain di mana adanya pertukaran data yang saling terkait antara berbagai entitas.', '2024-04-02'),
-('kslksdads', 'Gideon', 'photo2.jpg', 'Untuk mengonversi nilai ke tipe data number di JavaScript, terdapat beberapa metode yang bisa digunakan tergantung pada jenis nilai yang ingin dikonversi dan situasi spesifiknya. ', '2024-05-21');
+('15faab46-18cb-418b-aa56-a485f4b30803', 'Hong Ju', 'testimonial-1719243236513.jpg', 'Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file', '2024-06-25 00:33:56'),
+('21a64876-dc4c-465f-b156-ebf0aaf0a2a7', 'Donn', 'testimonial-1719248260612.jpg', 'The simplest and fastest way to get up and running with Tailwind CSS from scratch is with the Tailwind CLI tool.', '2024-06-25 01:57:40'),
+('53356d87-2c76-4a3a-8314-4f2d41f1e857', 'Jena', 'testimonial-1719242421520.PNG', 'You’ve got to get up every morning with determination if you’re going to go to bed with satisfaction.', '2024-06-25 00:20:21'),
+('63e8ac83-9733-43d2-b952-ae27792add2f', 'Ahmed Ali', 'testimonial-1719242951607.png', 'Sometimes, simply reading through a list of motivational wordsand contemplating what they mean to you, is a great way to feed your mind with positive motivation. So here is a list of more than 200 (I keep adding to it!) single motivational words that have been compiled to inspire and motivate you', '2024-06-25 00:29:11'),
+('922524d0-7829-47ec-bef5-ea83970786ee', 'Perez', 'testimonial-1719242492933.PNG', 'Perfection has to do with the end product, but excellence has to do with the process.', '2024-06-25 00:21:32'),
+('ae39690f-9dc5-475d-9292-abca60e65f88', 'Clarissa', 'testimonial-1719242694538.jpeg', 'Dengan menggunakan UUID sebagai primary key, Anda mendapatkan beberapa keuntungan seperti meningkatkan keamanan, karena UUID sulit ditebak, dan membantu dalam sistem terdistribusi di mana pengidentifikasi unik global diperlukan.', '2024-06-25 00:24:54'),
+('b2591489-9430-4def-a007-3303430aa870', 'Jeff', 'testimonial-1719242132520.png', 'INSERT INTO users (id, name, email, password)\r\nVALUES (UUID(), \'John Doe\', \'john.doe@example.com\', \'securepassword123\');\r\n', '2024-06-25 00:15:32'),
+('c7290ff0-8771-41cb-9d61-093cf0ef3214', 'Wu Xing jin', 'testimonial-1719243003608.PNG', 'The issue you are encountering is likely due to the fact that the event listeners for the .lihat-passport buttons are being added before the elements are actually inserted into the DOM. When the inProgressSearch event handler runs and inserts the new HTML, the previous event listeners do not apply to the newly created elements.', '2024-06-25 00:30:03'),
+('eaf9768b-39c5-433a-9268-2f5e7c5a8741', 'Lopez Pereira', 'testimonial-1719242762434.jpg', 'Dengan menggunakan UUID sebagai primary key, Anda mendapatkan beberapa keuntungan seperti meningkatkan keamanan, karena UUID sulit ditebak, dan membantu dalam sistem terdistribusi di mana pengidentifikasi unik global diperlukan.', '2024-06-25 00:26:02'),
+('f2ed75a6-a04a-4426-9f6b-e00fa73bd4dd', 'JEff', 'testimonial-1719242278708.jpg', 'UUID: Fungsi UUID() di MySQL menghasilkan UUID versi 1 (UUID1), yang didasarkan pada waktu dan alamat MAC komputer. Untuk mendapatkan UUID versi 4 (UUID4) yang dihasilkan secara acak, Anda perlu menggunakan logika di tingkat aplikasi (seperti di Sequelize).', '2024-06-25 00:17:58');
 
 -- --------------------------------------------------------
 
@@ -189,7 +195,8 @@ CREATE TABLE `tb_users` (
 INSERT INTO `tb_users` (`id`, `username`, `password`, `user_level`) VALUES
 (1, 'Gideon', '123', 'SUPERUSER'),
 (3, 'admin', '$2b$10$gX7L5RohgciC6N8/Gq84wOrGT.bLZ0DAzCFptYGp2EpHsQDcHrFL.', 'SUPERUSER'),
-(5, 'Jessy', '$2b$10$BLTFFVqUEuyO2C0KPHYxHu.JXpZmzqa/SY8WfEZ35dLN40ZX6W..u', 'PENYEDIA');
+(5, 'Jessy', '$2b$10$BLTFFVqUEuyO2C0KPHYxHu.JXpZmzqa/SY8WfEZ35dLN40ZX6W..u', 'PENYEDIA'),
+(6, 'Sean', '$2b$10$pqanIIXbJwfG3audhnvv/OJmjI8KmAsMRpRxbYfziVw0hVWHafmpm', 'FASILITATOR');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +252,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

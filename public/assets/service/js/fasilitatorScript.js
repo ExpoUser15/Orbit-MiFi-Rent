@@ -126,11 +126,11 @@ const actionMethod = () => {
 
 actionMethod();
 
-const search = (searchName, wrapper, path, status) => {
+const search = (searchName, wrapper, status) => {
     searchName.addEventListener('keyup', () => {
         const data = { search: searchName.value, status };
         
-        fetch(`http://localhost:7777/search/${path}`, {
+        fetch(`http://localhost:7777/search/${status}`, {
             method: "POST", // Metode HTTP
             headers: {
                 "Content-Type": "application/json"
@@ -164,16 +164,16 @@ const search = (searchName, wrapper, path, status) => {
 const inProgressSearch = document.querySelector('input[name="inProgressSearch"]');
 const inProgressWrapper = document.querySelector('.in-progress');
 
-search(inProgressSearch, inProgressWrapper, 'in-progress/search', 'in progress');
+search(inProgressSearch, inProgressWrapper, 'in-progress');
 
 // rented search
 const rentedSearch = document.querySelector('input[name="rentedSearch"]');
 const rentedWrapper = document.querySelector('.rented');
 
-search(rentedSearch, rentedWrapper, 'rented/search', 'rented');
+search(rentedSearch, rentedWrapper, 'rented');
 
 // finished search
 const finishedSearch = document.querySelector('input[name="finishedSearch"]');
 const finishedWrapper = document.querySelector('.finished');
 
-search(finishedSearch, finishedWrapper, 'finished/search', 'finished');
+search(finishedSearch, finishedWrapper, 'finished');

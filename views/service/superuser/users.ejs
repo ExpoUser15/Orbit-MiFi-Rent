@@ -8,7 +8,7 @@
             <h1 class="text-3xl font-semibold">Users</h1>
             <div class="mt-5 min-h-[400px] overflow-auto">
                 <div>
-                    <input type="text" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
+                    <input type="text" name="search" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                 </div>
                 <div class="grid grid-cols-4 uppercase text-sm text-slate-500 mt-2">
                     <div>
@@ -24,24 +24,26 @@
                         <p>Action</p>
                     </div>
                 </div>
-                <% let no = 1 %>
-                <% for(item of data){ %>
-                <div class="grid grid-cols-4 text-sm mt-5">
-                    <div class="flex items-center">
-                        <p><%= no++ %></p>
+                <div class="wrapper">
+                    <% let no = 1 %>
+                    <% for(item of data){ %>
+                    <div class="grid grid-cols-4 text-sm mt-5">
+                        <div class="flex items-center">
+                            <p><%= no++ %></p>
+                        </div>
+                        <div class="flex items-center">
+                            <p><%= item.username %></p>
+                        </div>
+                        <div class="flex items-center">
+                            <p><%= item.user_level %></p>
+                        </div>
+                        <div>
+                            <a class="me-4 cursor-pointer lihat-formEdit"><i data-name="<%= item.username %>" data-id="<%= item.id %>" class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="cursor-pointer" href="/superuser/users/delete/<%= item.id %>"><i class="fa-solid fa-trash"></i></a>
+                        </div>
                     </div>
-                    <div class="flex items-center">
-                        <p><%= item.username %></p>
-                    </div>
-                    <div class="flex items-center">
-                        <p><%= item.user_level %></p>
-                    </div>
-                    <div>
-                        <a class="me-4 cursor-pointer lihat-formEdit"><i data-name="<%= item.username %>" data-id="<%= item.id %>" class="fa-solid fa-pen-to-square"></i></a>
-                        <a class="cursor-pointer" href="/superuser/users/delete/<%= item.id %>"><i class="fa-solid fa-trash"></i></a>
-                    </div>
+                    <% } %>
                 </div>
-                <% } %>
             </div>
             <a class="p-2 bg-blue-500 rounded-sm text-white mt-5 cursor-pointer add-user">Add User <i class="fa-solid fa-plus ms-2"></i></a>
 
@@ -96,35 +98,6 @@
         </form>
     </dialog>
 
-
-    <script>
-        const formEdit = document.querySelectorAll('.lihat-formEdit');  
-        const addUserBtn = document.querySelector('.add-user');
-        const formCloseBtn = document.querySelector('#formCloseBtn');
-        const closeBtn = document.querySelector('#closeBtn');
-        const modal = document.querySelectorAll('dialog');
-
-        formEdit.forEach(item => {
-            item.addEventListener('click', (e) => {
-                modal[0].showModal();
-                const username = document.querySelector('.username');
-                username.textContent = e.target.dataset.name;
-                document.querySelector('input[name="id"]').value = e.target.dataset.id;
-                document.querySelector('input[name="username"]').value = e.target.dataset.name;
-            })
-        });
-
-        formCloseBtn.addEventListener('click', function(e){
-            modal[0].close();
-        });
-
-        addUserBtn.addEventListener('click', () => {
-            modal[1].showModal();
-        });
-
-        closeBtn.addEventListener('click', function(e){
-            modal[1].close();
-        });
-    </script>
+    <%- success %>
 
 <%- include('structure/footer') %>

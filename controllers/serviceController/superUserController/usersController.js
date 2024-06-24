@@ -3,11 +3,29 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../../../config/db');
 const usersSchema = require('../../../models/usersSchema');
 
+let action;
+
 const usersController = async (req, res) => {
     try {
         const query = await sequelize.query('SELECT * FROM `tb_users`', {
             type: QueryTypes.SELECT,
         });
+
+        if(action === 'error'){
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("form tidak boleh kosong!")</script>` });
+        }
+
+        if(action === 'add'){
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil ditambahkan.")</script>` });
+        }
+
+        if(action === 'update'){
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil diedit.")</script>` });
+        }
+
+        if(action === 'delete'){
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil dihapus.")</script>` });
+        }
 
         res.render('service/superuser/users.ejs', { path: req.path, data: query })
     } catch (error) {
@@ -26,6 +44,17 @@ const updateUserController = async (req, res) => {
             },
         );
 
+        sequelize
+            .sync()
+            .then(() => {
+                action = 'update';
+                res.redirect('/superuser/users');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+            });
+
         res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
@@ -40,6 +69,17 @@ const deleteUserController = async (req, res) => {
             },
         });
 
+        sequelize
+            .sync()
+            .then(() => {
+                action = 'delete';
+                res.redirect('/superuser/users');
+            })
+            .catch((error) => {
+                console.log(error);
+                res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+            });
+
         res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
@@ -51,13 +91,19 @@ const addUserController = async (req, res) => {
     try {
         const body = req.body;
 
+        console.log(body)
+
+        if(body.username === '' || body.password === ''){
+            action = 'error';
+            return res.redirect('/superuser/users');
+        }
+
         const saltRounds = 10;
 
         bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(req.body.password, salt, async function(err, hash) {
-                // Store hash in your password DB.
                 if(err){
-                    return res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+                    res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
                 }
 
                 await usersSchema.create({
@@ -66,19 +112,47 @@ const addUserController = async (req, res) => {
                     password: hash,
                     user_level: body.user_level
                 });
+
+                sequelize
+                .sync()
+                .then(() => {
+                    action = 'add';
+                    res.redirect('/superuser/users');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+                });
             });
         });
-        
-        console.log(req.body)
 
         res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }
 }
+
+const searchUsersController = async (req, res) => {
+    try {
+
+        const body = req.body;
+
+        const searchQuery = await sequelize.query('SELECT * FROM `tb_users` WHERE username LIKE :search OR user_level LIKE :search', {
+            type: QueryTypes.SELECT,
+            replacements: { search: `${body.search}%` },
+        });
+
+        res.json({ searchQuery });
+    } catch (error) {
+        console.log(error);
+        res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+    }
+}
+
 module.exports = {
     usersController,
     updateUserController,
     deleteUserController,
     addUserController,
+    searchUsersController,
 }

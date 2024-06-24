@@ -1,0 +1,64 @@
+<%- include('structure/head') %>
+    <div class="w-full bg-slate-100">
+        <%- include('layout/navbar') %>
+
+        <%- include('layout/sidebar') %>
+
+        <div class="w-full h-full pe-10 ps-72 pt-32">
+            <h1 class="text-3xl mb-20 font-semibold">Testimonials</h1>
+
+            <div class="grid grid-cols-1 gap-5 mt-10 pb-10">
+                <div>
+                    <h1>Testimonials</h1>
+
+                    <div class="grid grid-cols-2 shadow-lg bg-white p-5 text-sm mt-5 min-h-[20px] overflow-auto gap-5 wrapper" data-json="<%= json %>">
+                        
+                    </div>
+
+                    <div class="pageNumber mt-5 p-2 bg-slate-300 w-fit">
+                        <ul class="flex gap-4 text-blue-500 underline page-list">
+                            <li class="list cursor-pointer">1</li>
+                            <li class="list cursor-pointer">2</li>
+                            <li class="list cursor-pointer">3</li>
+                        </ul>
+                    </div>
+
+                    <button id="tambahTestimoniBtn" class="bg-blue-500 p-3 rounded-md mt-10 text-white text-sm hover:bg-blue-700 duration-500">Tambah Testimoni <i class="fa-solid fa-plus"></i></button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <dialog class="p-5 text-sm rounded-lg">
+        <div class="w-full">
+            <div class="text-end text-xl cursor-pointer" id="closeBtn"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <form action="/superuser/testimonial/add" method="POST" enctype="multipart/form-data">
+            <div class="flex flex-col mt-5">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="testimonial">Testimonial</label>
+                <input type="file" name="testimonial" class="text-[12px] w-56 outline-none text-slate-800 shadow mt-2">
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="text">Text</label>
+                <textarea name="text" cols="30" rows="10" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2"></textarea>
+            </div>
+            <button class="w-full p-2 bg-blue-500 text-white mt-5 rounded-sm hover:bg-blue-700 duration-500" type="submit">Submit</button>
+        </form>
+    </dialog>
+
+    <dialog>
+        <div class="text-end text-3xl cursor-pointer absolute right-3 top-3" id="closeImageBtn"><i class="fa-solid fa-xmark text-red-600"></i></div>
+        <div class="flex flex-col">
+            <img src=""  alt="" id="modalImage" class="max-w-[400px]">
+        </div>
+    </dialog>
+
+    <%- success %>
+
+ <%- include('structure/footer') %>z
