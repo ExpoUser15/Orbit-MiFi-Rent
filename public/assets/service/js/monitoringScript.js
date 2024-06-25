@@ -55,10 +55,16 @@ const displayFunction = (data, wrapper, val) => {
                         `<div class="flex items-center">
                             <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="${item.passport}">Lihat Gambar</button>
                         </div>
-                        <div class="flex items-center">
-                            <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
-                        </div>`) : 
-                    (
+                        ${item.boarding_passport === '-'? (
+                            ` <div class="flex items-center">
+                                <button class="ms-5">--</button>
+                            </div>`
+                        ) : (
+                            `<div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
+                            </div>`
+                        )}`
+                    ) : (
                         ''
                     )}
                     <div class="flex items-center">

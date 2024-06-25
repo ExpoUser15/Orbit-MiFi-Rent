@@ -107,13 +107,6 @@ submitBtn.addEventListener('submit', function (e) {
 });
 
 window.addEventListener('click', function (e) {
-  if (e.target.id == 'closeNotif') {
-    notifParent.classList.add('translate-x-[1000px]');
-    notifParent.classList.add('opacity-0');
-    clearTimeout(timeOut);
-    e.stopPropagation();
-  }
-
 
   if (e.target.classList.contains('required')) {
     e.target.classList.add('border-blue-500');

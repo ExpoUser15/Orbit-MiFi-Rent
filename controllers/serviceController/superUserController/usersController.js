@@ -27,9 +27,9 @@ const usersController = async (req, res) => {
             res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil dihapus.")</script>` });
         }
 
-        res.render('service/superuser/users.ejs', { path: req.path, data: query })
+        res.render('service/superuser/users.ejs', { path: req.path, data: query, success: '' })
     } catch (error) {
-        res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+        res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!'});
     }
 }
 
@@ -48,14 +48,12 @@ const updateUserController = async (req, res) => {
             .sync()
             .then(() => {
                 action = 'update';
-                res.redirect('/superuser/users');
+                return res.redirect('/superuser/users');
             })
             .catch((error) => {
                 console.log(error);
-                res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+                return res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
             });
-
-        res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }
@@ -73,14 +71,12 @@ const deleteUserController = async (req, res) => {
             .sync()
             .then(() => {
                 action = 'delete';
-                res.redirect('/superuser/users');
+                return res.redirect('/superuser/users');
             })
             .catch((error) => {
                 console.log(error);
                 res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
             });
-
-        res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }
@@ -103,7 +99,7 @@ const addUserController = async (req, res) => {
         bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(req.body.password, salt, async function(err, hash) {
                 if(err){
-                    res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
+                    return res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
                 }
 
                 await usersSchema.create({
@@ -117,7 +113,7 @@ const addUserController = async (req, res) => {
                 .sync()
                 .then(() => {
                     action = 'add';
-                    res.redirect('/superuser/users');
+                    return res.redirect('/superuser/users');
                 })
                 .catch((error) => {
                     console.log(error);
@@ -125,8 +121,6 @@ const addUserController = async (req, res) => {
                 });
             });
         });
-
-        res.redirect('/superuser/users');
     } catch (error) {
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }

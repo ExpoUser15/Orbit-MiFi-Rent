@@ -1,5 +1,6 @@
 const closeModal = document.querySelector('#closeModal');
 const editBtn = document.querySelector('#btnEdit');
+const modal = document.querySelectorAll('dialog');
 
 editBtn.addEventListener('click', (e) => {
     modal[0].showModal();

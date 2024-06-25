@@ -75,10 +75,10 @@ const displayFunction = (data, wrapper, val) => {
                     </div>
                     <div>
                         ${val === 'finished' ? (
-                            `<a class="cursor-pointer delete"><i data-href="fasilitator/delete/status/item.id" data-name="${item.name}" class="fa-solid fa-trash"></i></a>`
+                            `<a class="cursor-pointer delete" data-href="fasilitator/update/status/item.status/item.id"  data-name="${item.name}"><iclass="fa-solid fa-trash"></iclass=></a>`
                         ) : (
-                            `<a class="me-4 cursor-pointer update"><i data-href="fasilitator/update/status/item.status/item.id"  data-name="${item.name}" class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="cursor-pointer delete"><i data-href="fasilitator/delete/status/item.id" data-name="${item.name}" class="fa-solid fa-trash"></i></a>`
+                            `<a class="me-4 cursor-pointer update" data-href="fasilitator/update/status/item.status/item.id" data-name="${item.name}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="cursor-pointer delete" data-href="fasilitator/delete/status/item.id" data-name="${item.name}"><i class="fa-solid fa-trash"></i></a>`
                         )}
                     </div>
                 </div>`;
@@ -114,11 +114,11 @@ const actionMethod = () => {
 
     deleteStatus.forEach(item => {
         item.addEventListener('click', (e) => {
-            const name = e.target.dataset.name;
+            const name = item.dataset.name;
             const conf = confirm(`Apakah anda yakin ingin menghapus penyewa ${name}?`);
 
             if(conf){
-                window.location.href = e.target.dataset.href;
+                window.location.href = item.dataset.href;
             }
         })
     });

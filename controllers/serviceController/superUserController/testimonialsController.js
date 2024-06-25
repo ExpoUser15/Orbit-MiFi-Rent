@@ -1,6 +1,5 @@
 const { QueryTypes } = require("sequelize");
 const sequelize = require("../../../config/db");
-const testimonialsSchema = require("../../../models/testimonialsSchema");
 const { formattedDate } = require("../../../utils/date");
 const { v4: uuidv4 } = require('uuid');
 

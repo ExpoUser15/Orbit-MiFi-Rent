@@ -18,46 +18,6 @@ whyBtn.addEventListener('click', function(){
   explanationText.textContent = 'Orbit MiFi provides portable internet access with features such as checking remaining data packages, purchasing additional packages, and monitoring usage statistics. Portability and built-in batteries ensure users stay connected wherever they are, without the need for an external power source.';
 });
 
-// Mobile testimonials slider
-const testiCard = document.querySelectorAll('.testi-card');
-
-const sliderBtn = document.querySelectorAll('.slider-btn');
-
-let activeCard = '1';
-
-sliderBtn.forEach(item => {
-  item.addEventListener('click', (e) => {
-    const num = e.target.dataset.num;
-
-    let sliderNum = '1';
-
-    sliderBtn.forEach(el => {
-      if(activeCard === el.dataset.num){
-        el.classList.replace('w-7', 'w-4');
-        el.classList.replace('bg-blue-500', 'bg-slate-200');
-        sliderNum = activeCard;
-      }
-    });
-
-    testiCard.forEach(el => {
-        if(el.classList.contains('block')){
-          el.classList.replace('block', 'hidden');
-          console.log(el.dataset.id);
-          console.log('Ini num ', num);
-        }
-        if(el.dataset.id === num){
-          console.log(el.dataset);
-          el.classList.replace('hidden', 'block');
-        }
-    });
-
-    item.classList.replace('w-4', 'w-7');
-    item.classList.replace('bg-slate-200', 'bg-blue-500');
-
-    activeCard = num;
-  });
-});
-
 // See testimonial
 const modal = document.querySelector('dialog'),
 testiImg = document.getElementById('testimonialImg'),

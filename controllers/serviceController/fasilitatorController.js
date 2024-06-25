@@ -31,6 +31,7 @@ const fasilitatorController = async (req, res) => {
     
         res.render('service/index.ejs', { title: 'Telkomsel | Fasilitator' , path: req.path, rentalInProgress, rentalRented, rentalFinished, success: '' });
     } catch (error) {
+        console.log(error)
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }
 } 

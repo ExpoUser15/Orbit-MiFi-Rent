@@ -12,16 +12,16 @@ const { testimonialsController, addTestimonialController, deleteTestimonialContr
 const upload = require('../../middleware/testimonialsFileManager');
 
 serviceRouter.get('/login', loginController);
-serviceRouter.get('/penyedia', penyediaController);
-serviceRouter.get('/fasilitator', fasilitatorController);
+serviceRouter.get('/penyedia', authMiddleware, penyediaController);
+serviceRouter.get('/fasilitator', authMiddleware, fasilitatorController);
 serviceRouter.get('/fasilitator/update/status/:status/:id', statusUpdateController);
 serviceRouter.get('/superuser/monitoring/update/status/:status/:id', statusUpdateController);
 serviceRouter.get('/fasilitator/delete/status/:id', statusDeleteController);
 serviceRouter.get('/superuser/monitoring/delete/status/:id', statusDeleteController);
-serviceRouter.get('/superuser', dashboardController);
-serviceRouter.get('/superuser/monitoring', monitoringController);
-serviceRouter.get('/superuser/users', usersController);
-serviceRouter.get('/superuser/testimonial', testimonialsController);
+serviceRouter.get('/superuser', authMiddleware, dashboardController);
+serviceRouter.get('/superuser/monitoring', authMiddleware, monitoringController);
+serviceRouter.get('/superuser/users', authMiddleware, usersController);
+serviceRouter.get('/superuser/testimonial', authMiddleware, testimonialsController);
 serviceRouter.get('/superuser/testimonial/delete/:id', deleteTestimonialController);
 serviceRouter.get('/logout', logout);
 

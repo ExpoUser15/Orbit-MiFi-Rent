@@ -10,6 +10,19 @@ closeBtn.addEventListener('click', () => {
     dialog[0].close();
 });
 
+const displayModal = () => {
+    document.querySelectorAll('.testi-wrapper').forEach((item, index) => {
+        item.addEventListener('click', () => {
+            document.querySelectorAll('dialog')[1].showModal();
+            document.getElementById('modalImage').src = document.querySelectorAll('.testi-pic')[index].src;
+        });
+    });
+
+    document.querySelector('#closeImageBtn').addEventListener('click', () => {
+        document.querySelectorAll('dialog')[1].close();
+    });
+}
+
 const divideArray = (arr) => {
     const arr2 = [];
 
@@ -63,11 +76,11 @@ const display = (hash) => {
     if(!hash){
         div[0].forEach(item => {
             html += `
-                <div class="grid grid-cols-12 mt-10">
+                <div class="grid grid-cols-12 mt-10 gap-2">
                     <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300 testi-wrapper">
                         <img src="http://localhost:7777/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
                     </div>
-                    <div class="col-span-10">
+                    <div class="col-span-10 ms-4 lg:ms-0">
                         <h1 class="font-medium">${item.name}</h1>
     
                         <p class="mt-2 italic">${item.text}</p>
@@ -85,11 +98,11 @@ const display = (hash) => {
     }else{
         div[hash - 1].forEach(item => {
             html += `
-                <div class="grid grid-cols-12 mt-10">
+                <div class="grid grid-cols-12 mt-10 gap-2">
                     <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300 cursor-pointer testi-wrapper">
                         <img src="http://localhost:7777/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
                     </div>
-                    <div class="col-span-10">
+                    <div class="col-span-10 ms-4 lg:ms-0">
                         <h1 class="font-medium">${item.name}</h1>
     
                         <p class="mt-2 italic">${item.text}</p>
@@ -101,6 +114,7 @@ const display = (hash) => {
                             <p class="text-slate-400 text-[12px] italic">${item.createdAt}</p>
                         </div>
                     </div>
+                    
                 </div>
             `;
         });
@@ -111,6 +125,7 @@ const display = (hash) => {
 }
 
 wrapper.innerHTML = display(Number(page));
+displayModal();
 
 if (page) {
     const arr = [1, 2, 3, 4, 5];
@@ -168,14 +183,5 @@ if (page) {
     paginationList();
     wrapper.innerHTML = display(Number(page));
 
-    document.querySelectorAll('.testi-wrapper').forEach((item, index) => {
-        item.addEventListener('click', () => {
-            document.querySelectorAll('dialog')[1].showModal();
-            document.getElementById('modalImage').src = document.querySelectorAll('.testi-pic')[index].src;
-        });
-    });
-
-    document.querySelector('#closeImageBtn').addEventListener('click', () => {
-        document.querySelectorAll('dialog')[1].close();
-    });
+    displayModal();
 } 

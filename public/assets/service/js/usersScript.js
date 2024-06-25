@@ -9,9 +9,9 @@ const modalFunction = () => {
         item.addEventListener('click', (e) => {
             modal[0].showModal();
             const username = document.querySelector('.username');
-            username.textContent = e.target.dataset.name;
-            document.querySelector('input[name="id"]').value = e.target.dataset.id;
-            document.querySelector('input[name="username"]').value = e.target.dataset.name;
+            username.textContent = item.dataset.name;
+            document.querySelector('input[name="id"]').value = item.dataset.id;
+            document.querySelector('input[name="username"]').value = item.dataset.name;
         })
     });
 
