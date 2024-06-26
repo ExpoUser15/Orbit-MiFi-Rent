@@ -4,18 +4,13 @@
 
         <%- include('layout/sidebar') %>
 
-        <div class="w-full h-full lg:pe-10 lg:ps-72 pt-32 px-3">
+        <div class="w-full h-full lg:pe-10 lg:ps-72 pt-32 px-3 mb-10">
             <h1 class="text-3xl mb-20 font-semibold">Dashboard</h1>
-            <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+            <div class="grid grid-cols-1 gap-5">
                 <div>
                     <h1><i class="fa-solid fa-chart-column me-3"></i>Last Week's Rented Report</h1>
-                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="17/02/2024 - 24/02/2024" readonly>
+                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400 rentangtanggal" value="17/02/2024 - 24/02/2024" readonly>
                     <div id="chart" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
-                </div>
-                <div>
-                    <h1><i class="fa-solid fa-plus me-3"></i>Available Modem Report</h1>
-                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="Year: 2024" readonly>
-                    <div id="chart2" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
                 </div>
             </div>
 
@@ -56,6 +51,17 @@
                 </div>
             </div>
 
+            <div class="mt-10 text-sm bg-white p-3 mb-5">
+                <h1 class="text-lg">Lokasi Tersedia</h1>
+                <div class="grid grid-cols-2 mt-4 gap-2">
+                    <% for(const location of data.locations) {%>
+                        <div class="p-1 bg-slate-200">
+                            <p><%= location.location %></p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <a class="p-2 bg-blue-500 text-white cursor-pointer rounded-sm add">Add Location</a>
         </div>
     </div>
 
@@ -65,4 +71,23 @@
             <img src=""  alt="" id="modalImage" class="max-w-[400px]">
         </div>
     </dialog>
+
+    <dialog class="w-[250px] p-4 bg-slate-100 text-sm rounded-lg">
+        <div class="text-end cursor-pointer" id="closeModal">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </div>
+        <h1 class="text-lg">Tambah Lokasi</h1>
+        <form class="mt-5" action="/superuser/locations/add" method="POST">
+            <div class="mt-2 flex flex-col">
+                <label class="text-sm">Masukan Lokasi</label>
+                <input name="lokasi" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2" />
+            </div>
+            <button type="submit" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambahkan</button>
+       </form>
+    </dialog>
+
+    <% if(success){ %>
+        <script>alert("Data berhasil ditambahkan!")</script>
+    <% } %>
+
  <%- include('structure/footer') %>

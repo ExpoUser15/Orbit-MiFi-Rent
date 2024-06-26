@@ -52,6 +52,10 @@
             })
         }
     </script>
+
+    <% if(tokenExpired){ %>
+        <script>alert("Sesi anda telah berakhir, silahkan login kembali.")</script>
+    <% } %>
 </body>
 
 </html>

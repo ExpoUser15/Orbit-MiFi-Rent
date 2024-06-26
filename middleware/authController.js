@@ -1,19 +1,17 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
-    const token = req.cookies;
-
-    console.log(token);
+    const token = req.cookies.token;
 
     jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
         if(err){
             if(err.name === "TokenExpiredError"){
-                res.clearCookie("token");
-                return res.redirect('/login');
+                res.cookie('tokenExpired', true);
             }
 
-            console.log(err)
-            return res.redirect('/login');
+            if(req.path !== '/login'){
+                return res.redirect('/login');
+            }
         }
     });
     next();

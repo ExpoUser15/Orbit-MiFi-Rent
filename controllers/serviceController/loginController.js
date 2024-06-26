@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { Op, QueryTypes } = require('sequelize');
-const usersSchema = require('../../models/usersSchema');
+const { QueryTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../../config/db');
 
@@ -8,20 +7,17 @@ let success = true;
 
 const loginController = (req, res) => {
     try {
-        const token = req.cookies;
+        const token = req.cookies.token;
+        const tokenExpired = req.cookies.tokenExpired;
 
-        console.log(token)
+        if(tokenExpired){
+            res.clearCookie('token');
+            res.clearCookie('tokenExpired');
+            return res.render('service/login.ejs', { tokenExpired: true, success: true });
+        }
 
         if(token){
             jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
-                if(err){
-                    if(err.name === "TokenExpiredError"){
-                        res.clearCookie("token");
-                    }
-        
-                    return res.redirect('/login');
-                }
-    
                 if(decoded.userLevel === 'PENYEDIA'){
                     res.redirect('/penyedia');
                 }
@@ -34,7 +30,7 @@ const loginController = (req, res) => {
             });
         }
 
-        res.render('service/login.ejs', { success, });
+        res.render('service/login.ejs', { tokenExpired: false, success });
     } catch (error) {
         console.log(error)
         res.render('error.ejs', { 
@@ -70,7 +66,9 @@ const loginPostController = async (req, res) => {
         }
 
         const token = jwt.sign({ userLevel: users[0].user_level }, process.env.SECRET_KEY, { expiresIn: '1d' });
-        res.cookie("token", token, { httpOnly: true, secure: true }); // Tambahkan atribut cookie yang lebih aman
+        res.cookie("token", token, { httpOnly: true, secure: true }); 
+
+        success = true;
 
         if (users[0].user_level === 'PENYEDIA') {
             return res.redirect('/penyedia');
@@ -85,9 +83,17 @@ const loginPostController = async (req, res) => {
 }
 
 const logout = (req, res) => {
-    console.log(req.cookies.token);
-    res.clearCookie("token");
-    res.redirect('/login');
+    try {
+        res.clearCookie("token");
+        res.redirect('/login'); 
+    } catch (error) {
+        console.log(error)
+        res.render('error.ejs', { 
+            status: '500', 
+            title: 'Internal Server Error', 
+            msg: 'Please contact the administrator.' 
+        });
+    }
 }
 
 module.exports = {

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const rentRouter = require('./router/rentRouter/router');
 const serviceRouter = require('./router/serviceRouter/router');
 
@@ -9,6 +10,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
