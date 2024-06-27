@@ -7,6 +7,12 @@ let action;
 
 const testimonialsController = async (req, res) => {
     try {
+        const userLevel = req.userLevel;
+
+        if(userLevel.toLowerCase() !== 'superuser'){
+            return res.redirect(`/${userLevel.toLowerCase()}`);
+        }   
+        
         const query = await sequelize.query('SELECT * FROM `tb_testimonials` ORDER BY createdAt DESC LIMIT 18', {
             type: QueryTypes.SELECT,
         });

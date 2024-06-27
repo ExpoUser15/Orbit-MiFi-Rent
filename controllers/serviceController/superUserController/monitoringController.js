@@ -7,6 +7,12 @@ let msg;
 
 const monitoringController = async (req, res) => {
     try {
+        const userLevel = req.userLevel;
+
+        if(userLevel.toLowerCase() !== 'superuser'){
+            return res.redirect(`/${userLevel.toLowerCase()}`);
+        }   
+
         const rentalInProgress = await sequelize.query('SELECT * FROM `tb_rentals` JOIN tb_stoks ON tb_stoks.modem_id = tb_rentals.modem JOIN tb_plan ON tb_plan.plan_id = tb_rentals.plan WHERE status = "In Progress" ORDER BY startAt', {
             type: QueryTypes.SELECT,
         });

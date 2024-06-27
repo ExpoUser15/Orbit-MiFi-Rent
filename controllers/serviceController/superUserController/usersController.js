@@ -7,23 +7,33 @@ let action;
 
 const usersController = async (req, res) => {
     try {
+        const userLevel = req.userLevel;
+
+        if(userLevel.toLowerCase() !== 'superuser'){
+            return res.redirect(`/${userLevel.toLowerCase()}`);
+        }   
+
         const query = await sequelize.query('SELECT * FROM `tb_users`', {
             type: QueryTypes.SELECT,
         });
 
         if(action === 'error'){
+            action = null;
             res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("form tidak boleh kosong!")</script>` });
         }
 
         if(action === 'add'){
+            action = null;
             res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil ditambahkan.")</script>` });
         }
 
         if(action === 'update'){
+            action = null;
             res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil diedit.")</script>` });
         }
 
         if(action === 'delete'){
+            action = null;
             res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil dihapus.")</script>` });
         }
 

@@ -7,27 +7,12 @@ let success = true;
 
 const loginController = (req, res) => {
     try {
-        const token = req.cookies.token;
         const tokenExpired = req.cookies.tokenExpired;
 
         if(tokenExpired){
             res.clearCookie('token');
             res.clearCookie('tokenExpired');
             return res.render('service/login.ejs', { tokenExpired: true, success: true });
-        }
-
-        if(token){
-            jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
-                if(decoded.userLevel === 'PENYEDIA'){
-                    res.redirect('/penyedia');
-                }
-                if(decoded.userLevel === 'SUPERUSER'){
-                    res.redirect('/superuser');
-                }
-                if(decoded.userLevel === 'FASILITATOR'){
-                    res.redirect('/fasilitator');
-                }
-            });
         }
 
         res.render('service/login.ejs', { tokenExpired: false, success });

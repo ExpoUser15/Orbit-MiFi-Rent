@@ -21,33 +21,30 @@
                 <div class="grid grid-cols-2 w-full">
                     
                     <div class="">
-                        <h1 class="text-lg">Modem Tersedia</h1>
                         <div class="flex gap-4 text-sm items-center">
-                            <div class="mt-4">
-                                <span class="me-2">N1</span>
-                                <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1 text-center" id="n1" value="<%= jumlahModem.N1 %>" readonly>
-                            </div>
-                            <div class="mt-4">
-                                <span class="me-2">N2</span>
-                                <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1 text-center" id="n2" value="<%= jumlahModem.N2 %>" readonly>
-                            </div>
+                            
                             <button type="button" id="btnTambahkan" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambahkan Stok</button>
                             <button type="button" id="btnEdit" class="mt-5 p-2 bg-green-500 rounded-sm text-white text-sm">Edit Stok</button>
                         </div>
-                    </div>
-
-                    <div class="mt-5">
-                        <h1>Jumlah Pesanan</h1>
-                        <input type="text" id="jumlahPesanan" class="outline-none w-12 text-sm text-slate-500 p-1 mt-4 text-center" value="<%= rentalsCount %>" readonly>
                     </div>
                 </div>
 
                 <div class="mt-10 text-sm">
                     <h1 class="text-lg">Lokasi Tersedia</h1>
                     <div class="grid grid-cols-2 mt-4 gap-2">
-                        <% for(const location of locations) {%>
-                            <div class="p-1 bg-slate-200">
-                                <p><%= location.location %></p>
+                        <% for(const item of data) {%>
+                            <div class="p-1 bg-slate-200 flex justify-between">
+                                <p><%= item.location %></p>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex gap-2">
+                                        <p>N1: </p>
+                                        <p class="text-end"><%= item.n1 %></p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <p>N2: </p>
+                                        <p class="text-end"><%= item.n2 %></p>
+                                    </div>
+                                </div>
                             </div>
                         <% } %>
                     </div>
@@ -70,6 +67,14 @@
                 </select>
             </div>
             <div class="mt-2 flex flex-col">
+                <label class="text-sm">Pilih Modem</label>
+                <select name="location" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                    <%let no = 1; for(item of lokasi){ %>
+                        <option value="<%= no++ %>"><%= item.location %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="mt-2 flex flex-col">
                 <label class="text-sm">Jumlah</label>
                 <input name="jumlah" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2" />
             </div>
@@ -89,6 +94,14 @@
                 <select name="modem" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
                     <option value="N1">N1</option>
                     <option value="N2">N2</option>
+                </select>
+            </div>
+            <div class="mt-2 flex flex-col">
+                <label class="text-sm">Lokasi</label>
+                <select name="location" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                    <% let no2 = 1; for(item of lokasi){ %>
+                        <option value="<%= no2++ %>"><%= item.location %></option>
+                    <% } %>
                 </select>
             </div>
             <div class="mt-2 flex flex-col">

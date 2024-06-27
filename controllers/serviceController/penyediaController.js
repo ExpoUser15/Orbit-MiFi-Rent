@@ -1,31 +1,30 @@
 const { QueryTypes} = require('sequelize');
 const sequelize = require('../../config/db');
-const stokSchema = require('../../models/stokSchema');
-const rentalSchema = require('../../models/rentalSchema');
 
 let n1 = 0;
 let n2 = 0;
 
 const penyediaController = async (req, res) => {
 
-    const jenisModem = await stokSchema.findAll();
-    const countData = await rentalSchema.count();
-    const lokasi = await sequelize.query('SELECT location FROM `tb_locations`', {
+    const userLevel = req.userLevel;
+
+    if(userLevel.toLowerCase() !== 'penyedia'){
+        return res.redirect(`/${userLevel.toLowerCase()}`);
+    }   
+
+    const data = await sequelize.query('SELECT * FROM `tb_ready_stoks` JOIN `tb_locations` ON tb_locations.location_id = tb_ready_stoks.location', {
         type: QueryTypes.SELECT,
     });
 
-    n1 = jenisModem[0].dataValues.jumlah;
-    n2 = jenisModem[1].dataValues.jumlah;
+    const lokasi = await sequelize.query('SELECT * FROM `tb_locations`', {
+        type: QueryTypes.SELECT,
+    }); 
 
     res.render('service/index.ejs', { 
         title: 'Telkomsel | Penyedia', 
         path: req.path,
-        jumlahModem: {
-            N1: jenisModem[0].dataValues.jumlah,
-            N2: jenisModem[1].dataValues.jumlah
-        },
-        locations: lokasi,
-        rentalsCount: countData
+        data,
+        lokasi
     });
 }
 
@@ -33,13 +32,27 @@ const tambahModemController = async (req, res) => {
     try {
         const body = req.body;
 
-        const x = body.action === 'edit' ? body.jumlah : Number(body.jumlah) + (body.modem === 'N1' ? n1 : n2);
-
-        await stokSchema.update({
-            jumlah: x
-        }, { 
-            where: { jenis_modem: body.modem }
+        const data = await sequelize.query('SELECT * FROM `tb_ready_stoks` JOIN `tb_locations` ON tb_locations.location_id = tb_ready_stoks.location', {
+            type: QueryTypes.SELECT,
         });
+
+        const x = body.action === 'edit' ? body.jumlah : Number(body.jumlah) + (body.modem === 'N1' ? Number(data[0].n1) : Number(data[0].n2));
+        const num = Number(body.location);
+
+        if(body.modem === 'N1'){
+            await sequelize.query('UPDATE `tb_ready_stoks` SET n1 = :n1 WHERE location = :location', {
+                type: QueryTypes.SELECT,
+                replacements: { n1: x, location: num }
+            }); 
+        }
+
+        if(body.modem === 'N2'){
+            await sequelize.query('UPDATE `tb_ready_stoks` SET n2 = :n2 WHERE location = :location', {
+                type: QueryTypes.SELECT,
+                replacements: { n2: x, location: num }
+            }); 
+        }
+
 
         sequelize
             .sync()

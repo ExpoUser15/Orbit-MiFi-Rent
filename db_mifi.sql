@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2024 at 09:26 PM
+-- Generation Time: Jun 27, 2024 at 07:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -96,6 +96,30 @@ INSERT INTO `tb_plan` (`plan_id`, `plan`, `price`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_ready_stoks`
+--
+
+CREATE TABLE `tb_ready_stoks` (
+  `id` int(10) NOT NULL,
+  `location` varchar(5) NOT NULL,
+  `n1` varchar(5) NOT NULL,
+  `n2` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_ready_stoks`
+--
+
+INSERT INTO `tb_ready_stoks` (`id`, `location`, `n1`, `n2`) VALUES
+(4, '1', '70', '2'),
+(5, '2', '1', '2'),
+(6, '3', '0', '0'),
+(7, '4', '0', '0'),
+(8, '5', '3', '0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_rentals`
 --
 
@@ -140,7 +164,6 @@ INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `passport`, `boarding_pas
 CREATE TABLE `tb_stoks` (
   `modem_id` varchar(255) NOT NULL,
   `jenis_modem` varchar(2) NOT NULL,
-  `jumlah` int(10) NOT NULL,
   `price` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -148,9 +171,9 @@ CREATE TABLE `tb_stoks` (
 -- Dumping data for table `tb_stoks`
 --
 
-INSERT INTO `tb_stoks` (`modem_id`, `jenis_modem`, `jumlah`, `price`) VALUES
-('N101', 'N1', 20, 'IDR 675,000'),
-('N202', 'N2', 22, 'IDR 700,000');
+INSERT INTO `tb_stoks` (`modem_id`, `jenis_modem`, `price`) VALUES
+('N101', 'N1', 'IDR 675,000'),
+('N202', 'N2', 'IDR 700,000');
 
 -- --------------------------------------------------------
 
@@ -200,10 +223,9 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `username`, `password`, `user_level`) VALUES
-(1, 'Gideon', '123', 'SUPERUSER'),
-(5, 'Jessy', '$2b$10$BLTFFVqUEuyO2C0KPHYxHu.JXpZmzqa/SY8WfEZ35dLN40ZX6W..u', 'PENYEDIA'),
-(6, 'Sean', '$2b$10$pqanIIXbJwfG3audhnvv/OJmjI8KmAsMRpRxbYfziVw0hVWHafmpm', 'FASILITATOR'),
-(12, 'admin', '$2b$10$kgA9OjbrxqoXONnQguqjFO86Mhj4rS0qM.snGr99GgPhvzr5Otm.C', 'SUPERUSER');
+(12, 'admin', '$2b$10$kgA9OjbrxqoXONnQguqjFO86Mhj4rS0qM.snGr99GgPhvzr5Otm.C', 'SUPERUSER'),
+(13, 'Romy', '$2b$10$MDqgCVMXE7OSffiIx42nmOMVogOvEEj79FEMXQivpqDYXefLEpOGS', 'PENYEDIA'),
+(14, 'Doni', '$2b$10$xaI9IbGLm5dvZMYHFsqw5.LEYoZ02TNeBbkTXIznCXcwLpBdp1Hzi', 'FASILITATOR');
 
 --
 -- Indexes for dumped tables
@@ -226,6 +248,12 @@ ALTER TABLE `tb_locations`
 --
 ALTER TABLE `tb_plan`
   ADD PRIMARY KEY (`plan_id`);
+
+--
+-- Indexes for table `tb_ready_stoks`
+--
+ALTER TABLE `tb_ready_stoks`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_rentals`
@@ -262,10 +290,16 @@ ALTER TABLE `tb_locations`
   MODIFY `location_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `tb_ready_stoks`
+--
+ALTER TABLE `tb_ready_stoks`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
