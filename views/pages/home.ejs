@@ -7,7 +7,7 @@
 
     <div
         class="relative z-40 h-screen w-full flex flex-col md:flex-row md:items-center md:justify-evenly justify-center text-slate-100">
-        <img src="assets/img/home/modem.png" alt="modem"
+        <img src="<%= uri %>/assets/img/home/modem.png" alt="modem"
             class="self-center w-[180px] lg:w-[300px] duration-1000 ease floating-image">
         <div class="px-4 mt-2 w-96 lg:ms-5 duration-1000 ease">
             <h1 class="text-2xl lg:text-4xl poppins-semibold">WIFI FOR RENT</h1>
@@ -30,7 +30,7 @@
         id="briefSection">
 
         <div class="pb-5 md:flex md:items-center briefSubSection1">
-            <img src="assets/img/home/picture.png" alt=""
+            <img src="<%= uri %>/assets/img/home/picture.png" alt=""
                 class="min-w-[200px] md:min-w-[400px] lg:min-w-[550px]">
 
             <div class="shadow-lg">
@@ -66,7 +66,7 @@
                         modem
                         can be accessed up to 16 devices</p>
                     <div class="w-full mt-2 flex justify-end">
-                        <img src="assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
+                        <img src="<%= uri %>/assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
                     </div>
                 </div>
                 <div class="p-5 rounded-sm text cursor-pointer hover:-translate-y-2 hover:delay-0 shadow-lg"
@@ -76,7 +76,7 @@
                         returned after completion of use.
                     </p>
                     <div class="w-full mt-2 flex justify-end">
-                        <img src="assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
+                        <img src="<%= uri %>/assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
                     </div>
                 </div>
                 <div class="p-5 rounded-sm text cursor-pointer hover:-translate-y-2 hover:delay-0 shadow-lg"
@@ -85,7 +85,7 @@
                     <p>In addition to cheap rental prices and for packages, it also varies and prices are more
                         affordable than the new starter pack</p>
                     <div class="w-full mt-2 flex justify-end">
-                        <img src="assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
+                        <img src="<%= uri %>/assets/img/home/portal-T-gradient.png" alt="" class="w-[40px]">
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 <div class="p-5 z-10 relative cursor-pointer">
                     <div>
                         <h1 class="text-xl poppins-medium mb-2">MiFi N1</h1>
-                        <img src="assets/img/home/MIFI_N1-preview.png" alt="" class="w-[200px] m-auto">
+                        <img src="<%= uri %>/assets/img/home/MIFI_N1-preview.png" alt="" class="w-[200px] m-auto">
                     </div>
                     <div class="mt-5 ms-5">
                         <ul class="list-disc">
@@ -128,7 +128,7 @@
                 <div class="p-5 z-10 relative cursor-pointer">
                     <div>
                         <h1 class="text-xl poppins-medium mb-2">MiFi N1</h1>
-                        <img src="assets/img/home/MIFI_N2-preview.png" alt="" class="w-[200px] m-auto">
+                        <img src="<%= uri %>/assets/img/home/MIFI_N2-preview.png" alt="" class="w-[200px] m-auto">
                     </div>
                     <div class="mt-5 ms-5">
                         <ul class="list-disc">
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div>
-                <img src="assets/img/home/picture1.png" alt="" class="w-[415px] rounded-lg">
+                <img src="<%= uri %>/assets/img/home/picture1.jpeg" alt="" class="w-[415px] rounded-lg">
             </div>
         </div>
     </section>
@@ -214,7 +214,7 @@
                 </div>
                 <div class="flex gap-4 items-center cursor-pointer">
                     <div class="bg-cover bg-center w-16 h-16 rounded-full overflow-hidden">
-                        <img src="images/testimonials/<%= data.testimoni[0].testimonial %>" alt="" >
+                        <img src="<%= uri %>/images/testimonials/<%= data.testimoni[0].testimonial %>" alt="" >
                     </div>
                     <button class="hover:text-slate-400 duration-500 see" data-img="<%= data.testimoni[0].testimonial %>">See Picture</button>
                 </div>
@@ -229,7 +229,7 @@
                 </div>
                 <div class="flex gap-4 items-center cursor-pointer see">
                     <div class="bg-cover bg-center w-16 h-16 rounded-full overflow-hidden">
-                        <img src="images/testimonials/<%= data.testimoni[1].testimonial %>" alt="" >
+                        <img src="<%= uri %>/images/testimonials/<%= data.testimoni[1].testimonial %>" alt="" >
                     </div>
                     <button class="hover:text-slate-400 duration-500 see" data-img="<%= data.testimoni[1].testimonial %>">See Picture</button>
                 </div>
@@ -245,7 +245,7 @@
                 
                 <div class="flex gap-4 items-center cursor-pointer">
                     <div class="bg-cover bg-center w-16 h-16 rounded-full overflow-hidden">
-                        <img src="images/testimonials/<%= data.testimoni[2].testimonial %>" alt="" >
+                        <img src="<%= uri %>/images/testimonials/<%= data.testimoni[2].testimonial %>" alt="" >
                     </div>
                     <button class="hover:text-slate-400 duration-500 see" data-img="<%= data.testimoni[2].testimonial %>">See Picture</button>
                 </div>
@@ -254,13 +254,13 @@
 
         <div class="p-5 mt-[50px] lg:mt-[100px] overflow-hidden rounded-xl">
             <div class="w-full flex">
-                <img loading="lazy" src="assets/img/logo/telkom_logo.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-1 duration-[2000ms] delay-[2000ms] logo">
-                <img loading="lazy" src="assets/img/logo/bumn.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-2 duration-[2000ms delay-[2000ms] logo">
-                <img loading="lazy" src="assets/img/logo/telkomsel-logo-large.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto duration-[2000ms] delay-[2000ms] logo">
+                <img loading="lazy" src="<%= uri %>/assets/img/logo/telkom_logo.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-1 duration-[2000ms] delay-[2000ms] logo">
+                <img loading="lazy" src="<%= uri %>/assets/img/logo/bumn.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto bg-slate-200 p-2 duration-[2000ms delay-[2000ms] logo">
+                <img loading="lazy" src="<%= uri %>/assets/img/logo/telkomsel-logo-large.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto duration-[2000ms] delay-[2000ms] logo">
             </div>
             <div class="w-full flex mt-10 px-0 md:px-20">
-                <img loading="lazy" src="assets/img/logo/Branch-Sorong.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto duration-[2000ms] delay-[2000ms] logo">
-                <img loading="lazy" src="assets/img/logo/PTH_LOGO_NEW.png" alt="" class="max-w-[100px] md:max-w-[180px] m-auto duration-[2000ms] delay-[2000ms] logo">
+                <img loading="lazy" src="<%= uri %>/assets/img/logo/Branch-Sorong.png" alt="" class="max-w-[100px] md:max-w-[200px] m-auto duration-[2000ms] delay-[2000ms] logo">
+                <img loading="lazy" src="<%= uri %>/assets/img/logo/PTH_LOGO_NEW.png" alt="" class="max-w-[100px] md:max-w-[180px] m-auto duration-[2000ms] delay-[2000ms] logo">
             </div>
         </div>
 

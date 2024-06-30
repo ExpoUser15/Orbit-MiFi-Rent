@@ -13,7 +13,7 @@
                         <input type="text" name="inProgressSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-8 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
@@ -38,14 +38,9 @@
                         <div class="pe-2">
                             <p>Rental Status</p>
                         </div>
-                        <div>
-                            <p>Action</p>
-                        </div>
                     </div>
-                    <div class="in-progress h-[400px] overflow-auto">
-                        <% let no = 1; %>
                         <% for(const item of rentalInProgress) {%>
-                        <div class="grid grid-cols-9 text-sm mt-5 gap-2">
+                        <div class="grid grid-cols-8 text-sm mt-5 gap-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
@@ -74,13 +69,9 @@
                             <div class="flex items-center">
                                 <p class="text-yellow-500"><%= item.status %></p>
                             </div>
-                            <div>
-                                <a class="me-4 cursor-pointer update"><i data-href="fasilitator/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="cursor-pointer delete"><i data-href="fasilitator/delete/status/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-trash"></i></a>
-                            </div>
                         </div>
         
-                        <% no++ } %>
+                        <% } %>
                     </div>
                 </div>
 
@@ -93,7 +84,7 @@
                         <input type="text" name="rentedSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-8 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
@@ -118,14 +109,10 @@
                         <div class="pe-2">
                             <p>Rental Status</p>
                         </div>
-                        <div>
-                            <p>Action</p>
-                        </div>
                     </div>
                     <div class="rented h-[400px] overflow-auto">
-                        <% let no2 = 1; %>
                         <% for(const item of rentalRented) {%>
-                        <div class="grid grid-cols-9 text-sm mt-5 gap-2 row-2">
+                        <div class="grid grid-cols-8 text-sm mt-5 gap-2 row-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
@@ -154,13 +141,9 @@
                             <div class="flex items-center">
                                 <p class="text-blue-500"><%= item.status %></p>
                             </div>
-                            <div>
-                                <a class="me-4 cursor-pointer update"><i data-href="fasilitator/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="cursor-pointer delete"><i data-href="fasilitator/delete/status/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-trash"></i></a>
-                            </div>
                         </div>
         
-                        <% no++ } %>
+                        <% } %>
                     </div>
                 </div>
 
@@ -173,7 +156,7 @@
                         <input type="text" name="finishedSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-7 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-6 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
@@ -192,14 +175,10 @@
                         <div class="pe-2">
                             <p>Rental Status</p>
                         </div>
-                        <div>
-                            <p>Action</p>
-                        </div>
                     </div>
                     <div class="finished h-[400px] overflow-auto">
-                        <% let no3 = 1; %>
                         <% for(const item of rentalFinished) {%>
-                        <div class="grid grid-cols-7 text-sm mt-5 gap-2">
+                        <div class="grid grid-cols-6 text-sm mt-5 gap-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
@@ -218,12 +197,9 @@
                             <div class="flex items-center">
                                 <p class="text-green-500"><%= item.status %></p>
                             </div>
-                            <div>
-                                <a class="cursor-pointer delete" data-href="fasilitator/delete/status/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-trash"></i></a>
-                            </div>
                         </div>
         
-                        <% no++ } %>
+                        <% } %>
                     </div>
                 </div>
 

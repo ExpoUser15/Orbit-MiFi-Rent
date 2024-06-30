@@ -26,7 +26,7 @@ const contactSchema = sequelize.define(
       }
     },
     {
-      timestamps: false
+      timestamps: true
     }
 );
 

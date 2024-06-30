@@ -5,6 +5,8 @@ const modalFunction = () => {
     const closeBtn = document.querySelector('#closeBtn');
     const modal2 = document.querySelector('dialog');
 
+    const wrapper = document.querySelector('#inProgress');
+
     const boardingPass = document.querySelectorAll('.lihat-boardingpass');
 
     passport.forEach(item => {
@@ -14,18 +16,18 @@ const modalFunction = () => {
             const split = data.split(' - ');
 
             modal2.showModal();
-            modalImage.src = `http://localhost:7777/images/passport/${split[0]}`;
-            modalImage2.src = `http://localhost:7777/images/passport/${split[1]}`;
+            modalImage.src = `${wrapper.dataset.uri}/images/passport/${split[0]}`;
+            modalImage2.src = `${wrapper.dataset.uri}/images/passport/${split[1]}`;
         });
     });
 
     boardingPass.forEach(item => {
         item.addEventListener('click', (e) => {
-            const data = e.target.dataset.boardingpass;
+            const data = item.dataset.boardingpass;
 
             if(data !== '-'){
                 modal2.showModal();
-                modalImage.src = `http://localhost:7777/images/boardingpass/${data}`;
+                modalImage.src = `${wrapper.dataset.uri}/images/boardingpass/${data}`;
                 modalImage2.src = '';
             }
         });
@@ -74,10 +76,10 @@ const displayFunction = (data, wrapper, val) => {
                         <p>${item.plan}</p>
                     </div>
                     <div>
-                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
+                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in-progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
                     </div>
                     <div class="flex items-center">
-                        <p class="${val === 'rented' ? 'text-blue-500' : val === 'in progress' ? 'text-yellow-500' : 'text-green-500'}">${item.status}</p>
+                        <p class="${val === 'rented' ? 'text-blue-500' : val === 'in-progress' ? 'text-yellow-500' : 'text-green-500'}">${item.status}</p>
                     </div>
                     <div>
                         ${val === 'finished' ? (
@@ -99,10 +101,10 @@ const actionMethod = () => {
 
     update.forEach(item => {
         item.addEventListener('click', (e) => {
-            const name = e.target.dataset.name;
-            const href = e.target.dataset.href;
+            const name = item.dataset.name;
+            const href = item.dataset.href;
             const split = href.split('/')[3];
-            console.log(split)
+            
             let conf;
 
             if(split === 'Rented'){
@@ -169,7 +171,7 @@ const search = (searchName, wrapper, status) => {
 const inProgressSearch = document.querySelector('input[name="inProgressSearch"]');
 const inProgressWrapper = document.querySelector('.in-progress');
 
-search(inProgressSearch, inProgressWrapper, 'in progress');
+search(inProgressSearch, inProgressWrapper, 'in-progress');
 
 // rented search
 const rentedSearch = document.querySelector('input[name="rentedSearch"]');

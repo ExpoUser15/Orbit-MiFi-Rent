@@ -18,9 +18,8 @@
             </div>
             <div class="col-span-12 lg:col-span-6">
                 <label for="destination" class="text-sm duration-200 ease">Destination <span class="text-red-400">*</span></label>
-                <select name="modem" class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease required">
-                    <option class="bg-[#0B0610]"></option>
-                    <option class="bg-[#0B0610]">N2</option>
+                <select name="destination" class="py-2 bg-transparent border-b-[1px] text-[12px] poppins-light outline-none w-full text-slate-200 duration-200 ease destination required">
+                    <option value=""></option>
                 </select>
             </div>
             <div class="col-span-12 lg:col-span-6">
@@ -40,17 +39,17 @@
 
                 <div class="grid grid-cols-12">
                     <div class="w-full col-span-6">
-                        <img src="assets/img/home/MIFI_N1-preview.png" class="w-[80px] lg:w-[100px] my-4" alt="">
+                        <img src="<%= uri %>/assets/img/home/MIFI_N1-preview.png" class="w-[80px] lg:w-[100px] my-4" alt="">
                         <div>
                             <h1 class="text-sm">N1</h1>
-                            <div class="border-2 w-fit py-1 px-5"><%=  jumlah[0] %></div>
+                            <div class="border-2 w-fit py-1 px-5 n1"><%=  jumlah[0] %></div>
                         </div>
                     </div>
                     <div class="w-full flex flex-col col-span-6">
-                        <img src="assets/img/home/MIFI_N2-preview.png" class="w-[80px] lg:w-[100px] my-4" alt="">
+                        <img src="<%= uri %>/assets/img/home/MIFI_N2-preview.png" class="w-[80px] lg:w-[100px] my-4" alt="">
                         <div>
                             <h1 class="text-sm">N2</h1>
-                            <div class="border-2 w-fit py-1 px-5"><%= jumlah[1] %></div>
+                            <div class="border-2 w-fit py-1 px-5 n2"><%= jumlah[1] %></div>
                         </div>
                     </div>
                 </div>

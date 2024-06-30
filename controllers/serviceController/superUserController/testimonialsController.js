@@ -8,10 +8,13 @@ let action;
 const testimonialsController = async (req, res) => {
     try {
         const userLevel = req.userLevel;
+        const port = process.env.PORT || '7777';
 
-        if(userLevel.toLowerCase() !== 'superuser'){
-            return res.redirect(`/${userLevel.toLowerCase()}`);
-        }   
+        if(userLevel){
+            if(userLevel.toLowerCase() !== 'superuser'){
+                return res.redirect(`/${userLevel.toLowerCase()}`);
+            }   
+        } 
         
         const query = await sequelize.query('SELECT * FROM `tb_testimonials` ORDER BY createdAt DESC LIMIT 18', {
             type: QueryTypes.SELECT,
@@ -23,19 +26,23 @@ const testimonialsController = async (req, res) => {
 
         if(action === 'empty fields'){
             action = null;
-            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Form tidak boleh kosong!")</script>`,  json: JSON.stringify(json) });
+            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Form tidak boleh kosong!")</script>`,  json: JSON.stringify(json), uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
         if(action === 'add'){
             action = null;
-            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Berhasil menambahkan testimonial.")</script>`,  json: JSON.stringify(json) });
+            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Berhasil menambahkan testimonial.")</script>`,  json: JSON.stringify(json), uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
         if(action === 'delete'){
             action = null;
-            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Berhasil menghapus testimonial.")</script>`,  json: JSON.stringify(json) });
+            return res.render('service/superuser/testimonials.ejs', { path: req.path, success: `<script>alert("Berhasil menghapus testimonial.")</script>`,  json: JSON.stringify(json), uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
-        res.render('service/superuser/testimonials.ejs', { path: req.path, success: true, json: JSON.stringify(json) });
+        res.render('service/superuser/testimonials.ejs', { path: req.path, success: true, json: JSON.stringify(json), uri: `${req.protocol}://${req.hostname}:${port}`,
+        title: 'Orbit Mifi Rent | Superuser' });
     } catch (error) {
         return res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!' });
     }

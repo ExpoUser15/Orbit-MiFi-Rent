@@ -8,11 +8,26 @@ let success = true;
 const loginController = (req, res) => {
     try {
         const tokenExpired = req.cookies.tokenExpired;
+        const token = req.cookies.token;
+
+        if(token){
+            jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
+                if(err){
+                    return;
+                }
+                return res.redirect(`/${decoded.userLevel.toLowerCase()}`);
+            });
+        }
 
         if(tokenExpired){
             res.clearCookie('token');
             res.clearCookie('tokenExpired');
             return res.render('service/login.ejs', { tokenExpired: true, success: true });
+        }
+
+        if(!success){
+            console.log(success)
+            return res.render('service/login.ejs', { tokenExpired: false, success });
         }
 
         res.render('service/login.ejs', { tokenExpired: false, success });
@@ -29,14 +44,24 @@ const loginController = (req, res) => {
 const loginPostController = async (req, res) => {
     const { username, password } = req.body;
 
-    console.log(username, password);
+    if(!username || !password){
+        success = false;
+        return res.redirect('/login');
+    }
 
     const users = await sequelize.query('SELECT * FROM `tb_users` WHERE username = :username', {
         type: QueryTypes.SELECT,
         replacements: { 
-            username
+            username,
+            password
          }
     });
+
+    console.log(users)
+    if(!users[0]){
+        success = false;
+        return res.redirect('/login');
+    }
 
     bcrypt.compare(password, users[0].password, function(err, result) {
         if (err) {

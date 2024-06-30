@@ -78,11 +78,11 @@ const display = (hash) => {
             html += `
                 <div class="grid grid-cols-12 mt-10 gap-2">
                     <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300 testi-wrapper">
-                        <img src="http://localhost:7777/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
+                        <img src="${wrapper.dataset.uri}/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
                     </div>
                     <div class="col-span-10 ms-4 lg:ms-0">
                         <h1 class="font-medium">${item.name}</h1>
-    
+                        
                         <p class="mt-2 italic">${item.text}</p>
     
                         <div class="flex justify-between mt-5">
@@ -100,7 +100,7 @@ const display = (hash) => {
             html += `
                 <div class="grid grid-cols-12 mt-10 gap-2">
                     <div class="w-16 h-16 rounded-full overflow-hidden col-span-2 border-2 border-gray-300 cursor-pointer testi-wrapper">
-                        <img src="http://localhost:7777/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
+                        <img src="${wrapper.dataset.uri}/images/testimonials/${item.testimonial}" alt="" class="w-16 m-auto testi-pic">
                     </div>
                     <div class="col-span-10 ms-4 lg:ms-0">
                         <h1 class="font-medium">${item.name}</h1>

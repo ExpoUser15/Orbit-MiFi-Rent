@@ -15,18 +15,6 @@ const authMiddleware = (req, res, next) => {
         }
 
             req.userLevel = decoded?.userLevel;
-
-        // if(decoded.userLevel.toLowerCase() !== 'superuser'){
-        //     return res.redirect('/superuser');
-        // }
-        // if(decoded.userLevel.toLowerCase() !== 'penyedia'){
-        //     return res.redirect('/penyedia');
-        // }
-        // if(decoded.userLevel.toLowerCase() !== 'fasilitator'){
-        //     return res.redirect('/fasilitator');
-        // }
-        // console.log(decoded.userLevel.toLowerCase());
-        // console.log(decoded.userLevel.toLowerCase().includes('superuser'));
     });
     next();
 }

@@ -8,10 +8,13 @@ let action;
 const usersController = async (req, res) => {
     try {
         const userLevel = req.userLevel;
+        const port = process.env.PORT || '7777';
 
-        if(userLevel.toLowerCase() !== 'superuser'){
-            return res.redirect(`/${userLevel.toLowerCase()}`);
-        }   
+        if(userLevel){
+            if(userLevel.toLowerCase() !== 'superuser'){
+                return res.redirect(`/${userLevel.toLowerCase()}`);
+            }   
+        }  
 
         const query = await sequelize.query('SELECT * FROM `tb_users`', {
             type: QueryTypes.SELECT,
@@ -19,26 +22,32 @@ const usersController = async (req, res) => {
 
         if(action === 'error'){
             action = null;
-            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("form tidak boleh kosong!")</script>` });
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("form tidak boleh kosong!")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
         if(action === 'add'){
             action = null;
-            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil ditambahkan.")</script>` });
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil ditambahkan.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
         if(action === 'update'){
             action = null;
-            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil diedit.")</script>` });
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil diedit.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
         if(action === 'delete'){
             action = null;
-            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil dihapus.")</script>` });
+            res.render('service/superuser/users.ejs', { path: req.path, data: query, success: `<script>alert("User berhasil dihapus.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
         }
 
-        res.render('service/superuser/users.ejs', { path: req.path, data: query, success: '' })
+        res.render('service/superuser/users.ejs', { path: req.path, data: query, success: '', uri: `${req.protocol}://${req.hostname}:${port}`,
+        title: 'Orbit Mifi Rent | Superuser' })
     } catch (error) {
+        console.log(error)
         res.render('error.ejs', { title: 'Internal Server Error', status: 500, msg: 'Silahkan hubungi administrator!'});
     }
 }

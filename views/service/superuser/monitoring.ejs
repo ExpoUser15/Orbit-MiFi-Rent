@@ -5,7 +5,7 @@
         <%- include('layout/sidebar') %>
         <div class="w-full h-full py-14 px-5 lg:pe-14">
             <h1 class="lg:ms-72 text-2xl mt-16 mb-5">Rental Monitoring</h1>
-            <section id="inProgress" class="lg:ms-72 mt-10 bg-white p-5">
+            <section id="inProgress" class="lg:ms-72 mt-10 bg-white p-5" data-uri="<%= uri %>">
                 <h1 class="text-2xl">In Progress</h1>
                 <div class="mt-5 min-h-[400px]">
                     <div>
@@ -74,8 +74,8 @@
                                     <p class="text-yellow-500"><%= item.status %></p>
                                 </div>
                                 <div>
-                                    <a class="me-4 cursor-pointer update"><i data-href="monitoring/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-pen-to-square"></i></a>
-                                    <a class="cursor-pointer delete"><i data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-trash"></i></a>
+                                    <a class="me-4 cursor-pointer update" data-href="monitoring/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="cursor-pointer delete" data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>
             
@@ -156,8 +156,8 @@
                                     <p class="text-blue-500"><%= item.status %></p>
                                 </div>
                                 <div>
-                                    <a class="me-4 cursor-pointer update"><i data-href="monitoring/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-pen-to-square"></i></a>
-                                    <a class="cursor-pointer delete"><i data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-trash"></i></a>
+                                    <a class="me-4 cursor-pointer update" data-href="monitoring/update/status/<%= item.status %>/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="cursor-pointer delete" data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>
             
@@ -223,7 +223,7 @@
                                     <p class="text-green-500"><%= item.status %></p>
                                 </div>
                                 <div>
-                                    <a class="cursor-pointer delete"><i data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>" class="fa-solid fa-trash"></i></a>
+                                    <a class="cursor-pointer delete" data-href="monitoring/delete/status/<%= item.id %>" data-name="<%= item.name %>"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>
             

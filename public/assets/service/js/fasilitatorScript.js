@@ -68,10 +68,10 @@ const displayFunction = (data, wrapper, val) => {
                         <p>${item.plan}</p>
                     </div>
                     <div>
-                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
+                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in-progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
                     </div>
                     <div class="flex items-center">
-                        <p class="${val === 'rented' ? 'text-blue-500' : val === 'in progress' ? 'text-yellow-500' : 'text-green-500'}">${item.status}</p>
+                        <p class="${val === 'rented' ? 'text-blue-500' : val === 'in-progress' ? 'text-yellow-500' : 'text-green-500'}">${item.status}</p>
                     </div>
                     <div>
                         ${val === 'finished' ? (
@@ -88,44 +88,6 @@ const displayFunction = (data, wrapper, val) => {
     return html;
 }
 
-const actionMethod = () => {
-    const update = document.querySelectorAll('.update');
-    const deleteStatus = document.querySelectorAll('.delete');
-
-    update.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const name = e.target.dataset.name;
-            const href = e.target.dataset.href;
-            const split = href.split('/')[3];
-
-            let conf;
-
-            if(split === 'Rented'){
-                conf = confirm(`Apakah anda yakin ingin mengubah status penyewa ${name} ke "Finished"?`);
-            }else if(split === 'In Progress'){
-                conf = confirm(`Apakah anda yakin ingin mengubah status penyewa ${name} ke "Rented"?`);
-            }
-
-            if(conf){
-                window.location.href = href;
-            }
-        });
-    });
-
-    deleteStatus.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const name = item.dataset.name;
-            const conf = confirm(`Apakah anda yakin ingin menghapus penyewa ${name}?`);
-
-            if(conf){
-                window.location.href = item.dataset.href;
-            }
-        })
-    });
-}
-
-actionMethod();
-
 const search = (searchName, wrapper, status) => {
     searchName.addEventListener('keyup', () => {
         const data = { search: searchName.value, status };
@@ -141,7 +103,6 @@ const search = (searchName, wrapper, status) => {
         .then(data => {
             const display = displayFunction(data.data, wrapper, status);
             wrapper.insertAdjacentHTML('beforeend', display);
-            actionMethod();
             modalFunction();
 
             if(status === 'rented'){

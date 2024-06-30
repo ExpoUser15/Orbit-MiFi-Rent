@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const rentRouter = require('./router/rentRouter/router');
-const serviceRouter = require('./router/serviceRouter/router');
+const serviceRouter = require('./router/router');
 
 require('dotenv').config();
+
+const port = process.env.PORT || '7777';
 
 const app = express();
 
@@ -14,9 +15,8 @@ app.use(cookieParser());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(rentRouter);
 app.use(serviceRouter);
 
-app.listen('7777', () => {
+app.listen(port, () => {
     console.log('Server running on port 7777');
 });

@@ -1,0 +1,62 @@
+<%- include('structure/head') %>
+    <div class="w-full bg-slate-100">
+        <%- include('layout/navbar') %>
+
+        <%- include('layout/sidebar') %>
+
+        <section id="rental" class="px-3 lg:px-0 lg:pe-10 lg:ps-72 pt-32 mb-10">
+            <h1 class="text-3xl font-semibold">Contact</h1>
+            <div class="mt-5 min-h-[400px] overflow-auto bg-white p-5">
+                <div>
+                    <input type="text" name="search" class="mb-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
+                </div>
+                <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div>
+                        <p>No</p>
+                    </div>
+                    <div>
+                        <p>Name</p>
+                    </div>
+                    <div>
+                        <p>Phone</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p>Email</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p>Message</p>
+                    </div>
+                    <div>
+                        <p>Date</p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <% let no = 1 %>
+                    <% for(item of data){ %>
+                    <div class="grid grid-cols-9 text-sm mt-5 gap-2">
+                        <div class="flex items-center">
+                            <p><%= no++ %></p>
+                        </div>
+                        <div class="flex items-center">
+                            <p><%= item.name %></p>
+                        </div>
+                        <div class="flex items-center">
+                            <p><%= item.phone %></p>
+                        </div>
+                        <div class="flex items-center col-span-2">
+                            <p><%= item.email %></p>
+                        </div>
+                        <div class="flex items-center col-span-2 overflow-auto text-wrap">
+                            <p><%= item.message %></p>
+                        </div>
+                        <div class="flex items-center">
+                            <p><%= item.createdAt %></p>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<%- include('structure/footer') %>

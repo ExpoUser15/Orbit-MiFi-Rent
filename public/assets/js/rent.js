@@ -71,3 +71,40 @@ let numericValue2 = parseInt(numberWithoutCommas2);
 const add = numericValue + numericValue2;
 const strResult = add.toLocaleString();
 totalPrice.value =  `IDR ${strResult}`;
+
+const availableStok = () => {
+    fetch('http://localhost:7777/rent/location')
+    .then(res => res.json())
+    .then(res => {
+        const data = res.data[0];
+        const destination = document.querySelector('.destination');
+        
+        const n1 = document.querySelector('.n1');
+        const n2 = document.querySelector('.n2');
+   
+        let option = '';
+    
+        data.forEach(el => {
+            option += `
+                <option class="bg-[#0B0610]" value="${el.location}">${el.location}</option>
+            `;
+        });
+        
+        destination.insertAdjacentHTML('beforeend', option);
+
+        destination.addEventListener('change', (e) => {
+            data.forEach(item => {
+                if(e.target.value === item.location){
+                    n1.textContent = item.n1;
+                    n2.textContent = item.n2;
+                }
+                if(e.target.value === ""){
+                    n1.textContent = '0';
+                    n2.textContent = '0';
+                }
+            })
+        });
+    });
+}
+
+availableStok();
