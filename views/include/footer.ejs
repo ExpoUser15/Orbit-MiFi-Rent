@@ -1,0 +1,13 @@
+<script src="<%= uri %>/assets/js/font-awesome/all.min.js" crossorigin="anonymous"></script>
+    <script src="<%= uri %>/assets/js/components/navbar.js"></script>
+    <script src="<%= uri %>/assets/js/components/sidebar.js"></script>
+    <% if(data.path === '/'){ %>
+        <script src="<%= uri %>/assets/js/script.js"></script>
+    <% } else if(data.path === '/contact') { %>
+        <script src="<%= uri %>/assets/js/formValidator.js"></script>
+    <% } else if(data.path === '/rent') { %>
+        <script src="<%= uri %>/assets/js/formValidator.js"></script>
+        <script src="<%= uri %>/assets/js/rent.js"></script>
+    <% } %>
+</body>
+</html>

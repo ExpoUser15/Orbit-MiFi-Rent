@@ -1,0 +1,17 @@
+<%- include('include/head') %>
+
+    <%- include('layouts/navbar') %>
+    
+    <%- include('layouts/sidebar') %>
+
+    <% if(data.path === '/' ){ %>
+        <%- include('pages/home') %>
+    <% }else if(data.path === '/rent'){ %>
+        <%- include('pages/rent') %>
+    <% } else if(data.path === '/about'){ %>
+        <%- include('pages/about') %>
+    <% }else if(data.path === '/contact'){ %>
+        <%- include('pages/contact') %>
+    <% } %>
+
+<%- include('include/footer') %>

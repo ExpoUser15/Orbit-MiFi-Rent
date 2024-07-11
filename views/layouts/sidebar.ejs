@@ -1,0 +1,27 @@
+<aside class="w-[60%] bg-[#C90030] h-screen fixed z-[999] right-0 me-[-2000px] duration-500 ease-in-out lg:hidden">
+    <div class="text-3xl text-slate-100 text-end m-5" id="xmark">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <div class="h-fit w-[150px] m-auto mt-[50px]">
+        <img src="assets/img/logo/telkomsel-logo.png" alt="telkomsel logo" class="m-auto">
+
+        <div class="mt-[50px] h-full">
+            <ul class="text-slate-100 flex flex-col justify-evenly items-center h-[200px]">
+                <li class="<%= data.path === '/' ? 'text-blue-500 border-b border-blue-500' : '' %>"><a href="/">Home</a></li>
+                <li class="<%= data.path === '/rent' ? 'text-blue-500 border-b border-blue-500' : '' %>"><a href="/"><a href="/rent">Rent</a></li>
+                <li class="<%= data.path === '/about' ? 'text-blue-500 border-b border-blue-500' : '' %>"><a href="/"><a href="/about">About</a></li>
+                <li class="<%= data.path === '/contact' ? 'text-blue-500 border-b border-blue-500' : '' %>"><a href="/"><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="text-slate-100 mt-[100px]">
+            <h1 class="text-xl poppins-semibold text-center">Follow Us On</h1>
+            <div class="text-xl flex justify-evenly mt-2 items-center">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+</aside>
