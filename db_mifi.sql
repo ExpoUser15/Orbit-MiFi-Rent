@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2024 at 03:29 PM
+-- Generation Time: Jul 13, 2024 at 06:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,7 +57,8 @@ INSERT INTO `tb_locations` (`location_id`, `location`) VALUES
 (2, 'Raja Ampat'),
 (3, 'Tambrauw'),
 (4, 'Teminabuan'),
-(5, 'Maybrat');
+(5, 'Maybrat'),
+(6, 'Manokwari');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `tb_ready_stoks` (
 --
 
 INSERT INTO `tb_ready_stoks` (`id`, `location`, `n1`, `n2`) VALUES
-(4, '1', '0', '0'),
+(4, '1', '7', '0'),
 (5, '2', '0', '0'),
 (6, '3', '0', '0'),
 (7, '4', '0', '0'),
@@ -120,6 +121,7 @@ CREATE TABLE `tb_rentals` (
   `id` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `destination` varchar(50) NOT NULL,
+  `bak` varchar(255) NOT NULL,
   `passport` varchar(100) NOT NULL,
   `boarding_passport` varchar(100) DEFAULT NULL,
   `modem` varchar(4) NOT NULL,
@@ -129,6 +131,14 @@ CREATE TABLE `tb_rentals` (
   `startAt` varchar(20) NOT NULL,
   `finishAt` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_rentals`
+--
+
+INSERT INTO `tb_rentals` (`id`, `name`, `destination`, `bak`, `passport`, `boarding_passport`, `modem`, `plan`, `total_price`, `status`, `startAt`, `finishAt`) VALUES
+('5fdadcb8-49f7-4e84-a262-cc29c9158c49', 'Gideon Marchell', 'Sorong', 'bak-1720841299131.PNG', 'passport-1720725646812.PNG - passport-1720725646813.PNG', '-', 'N101', 'P01', 'IDR 695,000', 'Rented', '2024-07-13 12:28:31', '2024-07-16 12:28:31'),
+('a79abfad-1c6f-4758-be37-0853a6b4e51b', 'Rodrigo Alves', 'Sorong', 'bak-1720725848564.PNG', 'passport-1720725628998.png - passport-1720725629001.PNG', '-', 'N101', 'P05', 'IDR 790,000', 'Finished', '2024-07-12 04:31:40', '2024-08-11 04:31:40');
 
 -- --------------------------------------------------------
 
@@ -164,6 +174,15 @@ CREATE TABLE `tb_testimonials` (
   `createdAt` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_testimonials`
+--
+
+INSERT INTO `tb_testimonials` (`testimonial_id`, `name`, `testimonial`, `text`, `createdAt`) VALUES
+('12', 'No Name', '', 'There is no testimonial', ''),
+('21', 'No Name', '', 'There is no testimonial', ''),
+('23', 'No Name', '', 'There is no testimonial', '');
+
 -- --------------------------------------------------------
 
 --
@@ -182,7 +201,8 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `username`, `password`, `user_level`) VALUES
-(12, 'admin', '$2b$10$kgA9OjbrxqoXONnQguqjFO86Mhj4rS0qM.snGr99GgPhvzr5Otm.C', 'SUPERUSER');
+(12, 'admin', '$2b$10$kgA9OjbrxqoXONnQguqjFO86Mhj4rS0qM.snGr99GgPhvzr5Otm.C', 'SUPERUSER'),
+(15, 'Gideon', '$2b$10$NBT5TKJZ46ujw.CYCrmK4.uXsRFdo0cdzCg2.S8hwCFUQ85qICd5C', 'PENYEDIA');
 
 --
 -- Indexes for dumped tables
@@ -241,12 +261,6 @@ ALTER TABLE `tb_users`
 --
 
 --
--- AUTO_INCREMENT for table `tb_locations`
---
-ALTER TABLE `tb_locations`
-  MODIFY `location_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `tb_ready_stoks`
 --
 ALTER TABLE `tb_ready_stoks`
@@ -256,7 +270,7 @@ ALTER TABLE `tb_ready_stoks`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
