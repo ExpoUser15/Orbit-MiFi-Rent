@@ -6,7 +6,7 @@ const { loginController, loginPostController, logout } = require('../controllers
 const { authMiddleware } = require('../middleware/authController');
 const { fasilitatorController } = require('../controllers/serviceController/fasilitatorController');
 const { monitoringController, superuserUploadBAKController } = require('../controllers/serviceController/superUserController/monitoringController');
-const { dashboardController, addLocationsController } = require('../controllers/serviceController/superUserController/dashboardController');
+const { dashboardController, addLocationsController, deleteLocationsController } = require('../controllers/serviceController/superUserController/dashboardController');
 const { searchController, statusUpdateController, statusDeleteController } = require('../controllers/serviceController/actionController');
 const { usersController, updateUserController, deleteUserController, addUserController, searchUsersController } = require('../controllers/serviceController/superUserController/usersController');
 const { testimonialsController, addTestimonialController, deleteTestimonialController } = require('../controllers/serviceController/superUserController/testimonialsController');
@@ -53,6 +53,7 @@ serviceRouter.post('/penyedia/action', tambahModemController);
 serviceRouter.post('/superuser/users/update', updateUserController);
 serviceRouter.post('/superuser/users/add', addUserController);
 serviceRouter.post('/superuser/locations/add', addLocationsController);
+serviceRouter.post('/superuser/locations/delete', deleteLocationsController);
 serviceRouter.post('/superuser/testimonial/add', upload2.fields([{ name: 'testimonial', maxCount: 1 }]), addTestimonialController);
 serviceRouter.post('/upload/bak/:id', uploadBAK.fields([{ name: 'bak', maxCount: 1 }]), uploadBAKController);
 serviceRouter.post('/superuser/upload/bak/:id', uploadBAK.fields([{ name: 'bak', maxCount: 1 }]), superuserUploadBAKController);

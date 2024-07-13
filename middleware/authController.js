@@ -14,7 +14,7 @@ const authMiddleware = (req, res, next) => {
             }
         }
 
-            req.userLevel = decoded?.userLevel;
+        req.userLevel = decoded?.userLevel;
     });
     next();
 }

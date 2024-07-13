@@ -1066,10 +1066,6 @@ video {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
-.grid-cols-7 {
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
 .grid-cols-8 {
   grid-template-columns: repeat(8, minmax(0, 1fr));
 }
@@ -1516,6 +1512,10 @@ video {
 
 .pt-\[80px\] {
   padding-top: 80px;
+}
+
+.ps-2 {
+  padding-inline-start: 0.5rem;
 }
 
 .text-center {

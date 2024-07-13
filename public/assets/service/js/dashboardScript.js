@@ -16,3 +16,11 @@ document.querySelector('.add').addEventListener('click', () => {
 document.querySelector('#closeModal').addEventListener('click', () => {
     document.querySelectorAll('dialog')[1].close();
 });
+
+document.querySelector('.delete').addEventListener('click', () => {
+    document.querySelectorAll('dialog')[2].showModal();
+});
+
+document.querySelector('#closeDeleteModal').addEventListener('click', () => {
+    document.querySelectorAll('dialog')[2].close();
+});

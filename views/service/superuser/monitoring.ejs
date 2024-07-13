@@ -12,14 +12,14 @@
                         <input type="text" name="inProgressSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     <div class="w-[900px] lg:w-fit overflow-auto bg-white">
-                        <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
+                        <div class="grid grid-cols-10 uppercase text-[12px] text-slate-500 mt-2 gap-2">
                             <div>
                                 <p>Name</p>
                             </div>
                             <div>
                                 <p>Destination</p>
                             </div>
-                            <div>
+                            <div class="ps-2">
                                 <p>BAK</p>
                             </div>
                             <div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="in-progress h-[400px] overflow-auto">
                             <% for(const item of rentalInProgress) {%>
-                            <div class="grid grid-cols-10 text-sm mt-5 gap-2">
+                            <div class="grid grid-cols-10 text-[12px] mt-5 gap-2">
                                 <div class="flex items-center">
                                     <p><%= item.name %></p>
                                 </div>
@@ -103,14 +103,14 @@
                     </div>
 
                     <div class="w-[900px] lg:w-fit overflow-auto bg-white">
-                        <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
+                        <div class="grid grid-cols-10 uppercase text-[12px] text-slate-500 mt-2 gap-2" >
                             <div>
                                 <p>Name</p>
                             </div>
                             <div>
                                 <p>Destination</p>
                             </div>
-                            <div>
+                            <div class="ps-2">
                                 <p>BAK</p>
                             </div>
                             <div>
@@ -137,7 +137,7 @@
                         </div>
                         <div class="rented h-[400px] overflow-auto">
                             <% for(const item of rentalRented) {%>
-                            <div class="grid grid-cols-10 text-sm mt-5 gap-2 row-2">
+                            <div class="grid grid-cols-10 text-[12px] mt-5 gap-2 row-2">
                                 <div class="flex items-center">
                                     <p><%= item.name %></p>
                                 </div>
@@ -191,14 +191,14 @@
                     </div>
 
                     <div class="w-[900px] lg:w-fit overflow-auto bg-white">
-                        <div class="grid grid-cols-10 uppercase text-sm text-slate-500 mt-2 gap-2">
+                        <div class="grid grid-cols-10 uppercase text-[12px] text-slate-500 mt-2 gap-2">
                             <div>
                                 <p>Name</p>
                             </div>
                             <div>
                                 <p>Destination</p>
                             </div>
-                            <div>
+                            <div class="ps-2">
                                 <p>BAK</p>
                             </div>
                             <div>
@@ -225,7 +225,7 @@
                         </div>
                         <div class="finished h-[400px] overflow-auto">
                             <% for(const item of rentalFinished) {%>
-                            <div class="grid grid-cols-10 text-sm mt-5 gap-2">
+                            <div class="grid grid-cols-10 text-[12px] mt-5 gap-2">
                                 <div class="flex items-center">
                                     <p><%= item.name %></p>
                                 </div>

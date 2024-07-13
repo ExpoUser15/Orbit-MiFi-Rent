@@ -93,10 +93,9 @@ const statusUpdateController = async (req, res) => {
             type: QueryTypes.SELECT,
             replacements:{ id: req.params.id}
         });
-        console.log(query[0]);
 
         if(query[0].bak === ''){
-            success = 'empty bak';
+            res.cookie('success', 'empty');
 
             if(req.path.includes('superuser/monitoring')){
                 res.redirect('/superuser/monitoring');

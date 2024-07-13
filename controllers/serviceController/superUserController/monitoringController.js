@@ -1,6 +1,5 @@
 const {  QueryTypes } = require('sequelize');
 const sequelize = require('../../../config/db');
-const rentalSchema = require('../../../models/rentalSchema');
 
 let action;
 let msg;
@@ -14,7 +13,7 @@ const monitoringController = async (req, res) => {
             if(userLevel.toLowerCase() !== 'superuser'){
                 return res.redirect(`/${userLevel.toLowerCase()}`);
             }   
-        }  
+        }
 
         const rentalInProgress = await sequelize.query('SELECT * FROM `tb_rentals` JOIN tb_stoks ON tb_stoks.modem_id = tb_rentals.modem JOIN tb_plan ON tb_plan.plan_id = tb_rentals.plan WHERE status = "In Progress" ORDER BY startAt', {
             type: QueryTypes.SELECT,
@@ -30,17 +29,23 @@ const monitoringController = async (req, res) => {
     
         if(action === 'Updated'){
             action = null;
-            return res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Fasilitator' , path: req.path, rentalInProgress, rentalRented, rentalFinished,  success: `<script>alert("Status diubah ke \'${msg}\'.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            return res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Superuser' , path: req.path, rentalInProgress, rentalRented, rentalFinished,  success: `<script>alert("Status diubah ke \'${msg}\'.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
             title: 'Orbit Mifi Rent | Superuser' });
         }
 
         if(action === 'Deleted'){
             action = null;
-            return res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Fasilitator' , path: req.path, rentalInProgress, rentalRented, rentalFinished,  success: `<script>alert("Penyewa berhasil dihapus.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            return res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Superuser' , path: req.path, rentalInProgress, rentalRented, rentalFinished,  success: `<script>alert("Penyewa berhasil dihapus.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
+            title: 'Orbit Mifi Rent | Superuser' });
+        }
+
+        if(req.cookies.success === 'empty'){
+            res.clearCookie('success');
+            return res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Superuser' , path: req.path, rentalInProgress, rentalRented, rentalFinished,  success: `<script>alert("Silahkan upload BAK terlebih dahulu.")</script>`, uri: `${req.protocol}://${req.hostname}:${port}`,
             title: 'Orbit Mifi Rent | Superuser' });
         }
     
-        res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Fasilitator' , path: req.path, rentalInProgress, rentalRented, rentalFinished, success: '', uri: `${req.protocol}://${req.hostname}:${port}`,
+        res.render('service/superuser/monitoring.ejs', { title: 'Telkomsel | Superuser' , path: req.path, rentalInProgress, rentalRented, rentalFinished, success: '', uri: `${req.protocol}://${req.hostname}:${port}`,
         title: 'Orbit Mifi Rent | Superuser' });
     } catch (error) {
         console.log(error)
@@ -52,17 +57,9 @@ const superuserUploadBAKController = async (req, res) => {
     try {
         const files = req.files;
 
-        console.log(files);
-        console.log(req.params);
-    
-        if(!files){
-            success = 'empty'
-            res.redirect('/penyedia');
-        }
-
         if(!req.params.id){
             success = false;
-            res.redirect('/penyedia');
+            res.redirect('/superuser/monitoring');
         }
 
         await sequelize.query('UPDATE tb_rentals SET bak = :bak WHERE id = :id', {

@@ -26,7 +26,6 @@ const loginController = (req, res) => {
         }
 
         if(!success){
-            console.log(success)
             return res.render('service/login.ejs', { tokenExpired: false, success });
         }
 
@@ -57,7 +56,6 @@ const loginPostController = async (req, res) => {
          }
     });
 
-    console.log(users)
     if(!users[0]){
         success = false;
         return res.redirect('/login');
