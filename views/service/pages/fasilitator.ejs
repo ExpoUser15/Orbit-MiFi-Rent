@@ -6,19 +6,22 @@
             <h1 class="text-3xl mb-20 font-semibold">Dashboard</h1>
             
             <h1 class="text-2xl mt-16 mb-5">Rental Monitoring</h1>
-            <section id="inProgress" class="pb-20 bg-white p-5">
+            <section id="inProgress" class="pb-20 bg-white p-5 mt-10">
                 <h1 class="text-2xl">In Progress</h1>
                 <div class="mt-5 min-h-[400px] overflow-auto">
                     <div>
                         <input type="text" name="inProgressSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-8 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
                         <div>
                             <p>Destination</p>
+                        </div>
+                        <div>
+                            BAK
                         </div>
                         <div>
                             <p>Passport</p>
@@ -39,14 +42,21 @@
                             <p>Rental Status</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="in-progress h-[400px] overflow-auto">
                         <% for(const item of rentalInProgress) {%>
-                        <div class="grid grid-cols-8 text-sm mt-5 gap-2">
+                        <div class="grid grid-cols-9 text-sm mt-5 gap-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
                             <div class="flex items-center">
                                 <p><%= item.destination %></p>
+                            </div>
+                            <div class="flex items-center">
+                                <% if(!item.bak){ %>
+                                    <div class="text-center ms-2">--</div>
+                                <% }else{ %>
+                                    <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-bak" data-bak="<%= item.bak %>">Lihat Gambar</button>
+                                <% } %>    
                             </div>
                             <div class="flex items-center">
                                 <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="<%= item.passport %>">Lihat Gambar</button>
@@ -85,12 +95,15 @@
                         <input type="text" name="rentedSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-8 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
                         <div>
                             <p>Destination</p>
+                        </div>
+                        <div>
+                            BAK
                         </div>
                         <div>
                             <p>Passport</p>
@@ -113,12 +126,15 @@
                     </div>
                     <div class="rented h-[400px] overflow-auto">
                         <% for(const item of rentalRented) {%>
-                        <div class="grid grid-cols-8 text-sm mt-5 gap-2 row-2">
+                        <div class="grid grid-cols-9 text-sm mt-5 gap-2 row-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
                             <div class="flex items-center">
                                 <p><%= item.destination %></p>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-bak" data-bak="<%= item.bak %>">Lihat Gambar</button>
                             </div>
                             <div class="flex items-center">
                                 <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="<%= item.passport %>">Lihat Gambar</button>
@@ -157,12 +173,21 @@
                         <input type="text" name="finishedSearch" class="my-4 text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow" placeholder="search...">
                     </div>
                     
-                    <div class="grid grid-cols-6 uppercase text-sm text-slate-500 mt-2 gap-2">
+                    <div class="grid grid-cols-9 uppercase text-sm text-slate-500 mt-2 gap-2">
                         <div>
                             <p>Name</p>
                         </div>
                         <div>
                             <p>Destination</p>
+                        </div>
+                        <div>
+                            <p>BAK</p>
+                        </div>
+                        <div>
+                            <p>Passport</p>
+                        </div>
+                        <div>
+                            <p>Boarding Passport</p>
                         </div>
                         <div>
                             <p>Modem</p>
@@ -179,12 +204,25 @@
                     </div>
                     <div class="finished h-[400px] overflow-auto">
                         <% for(const item of rentalFinished) {%>
-                        <div class="grid grid-cols-6 text-sm mt-5 gap-2">
+                        <div class="grid grid-cols-9 text-sm mt-5 gap-2">
                             <div class="flex items-center">
                                 <p><%= item.name %></p>
                             </div>
                             <div class="flex items-center">
                                 <p><%= item.destination %></p>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-bak" data-bak="<%= item.bak %>">Lihat Gambar</button>  
+                            </div>
+                            <div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="<%= item.passport %>">Lihat Gambar</button>
+                            </div>
+                            <div class="flex items-center">
+                                <% if(item.boarding_passport !== '-'){ %>
+                                    <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="<%= item.boarding_passport %>">Lihat Gambar</button>
+                                <% }else{ %>
+                                    <div class="text-center ms-5">--</div>
+                                <% } %>
                             </div>
                             <div class="flex items-center">
                                 <p><%= item.jenis_modem %></p>

@@ -6,6 +6,7 @@ const modalFunction = () => {
     const modal2 = document.querySelector('dialog');
 
     const boardingPass = document.querySelectorAll('.lihat-boardingpass');
+    const bak = document.querySelectorAll('.lihat-bak');
 
     passport.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -31,6 +32,18 @@ const modalFunction = () => {
         });
     });
 
+    bak.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const data = e.target.dataset.bak;
+
+            if(data !== '-'){
+                modal2.showModal();
+                modalImage.src = `images/bak/${data}`;
+                modalImage2.src = '';
+            }
+        });
+    });
+
     closeBtn.addEventListener('click', (e) => {
         modal2.close();
     });
@@ -44,23 +57,28 @@ const displayFunction = (data, wrapper, val) => {
     let html = '';
 
     for(const item of data){
-        html += `<div class="grid grid-cols-${val === 'finished' ? '7' : '9'} text-sm mt-5 gap-2">
+        html += `<div class="grid grid-cols-9 text-sm mt-5 gap-2">
                     <div class="flex items-center">
                         <p>${item.name}</p>
                     </div>
                     <div class="flex items-center">
                         <p>${item.destination}</p>
                     </div>
-                    ${val !== 'finished' ? (
-                        `<div class="flex items-center">
+                        ${item.bak === '' && val == 'in-progress' ? (
+                            `<div class="">--</div>`
+                            ) : (
+                            `<button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-bak" data-bak="${item.bak}">Lihat Gambar</button>`
+                        )}
+                        <div class="flex items-center">
                             <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="${item.passport}">Lihat Gambar</button>
                         </div>
-                        <div class="flex items-center">
-                            <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
-                        </div>`) : 
-                    (
-                        ''
-                    )}
+                        ${item.boarding_passport == '-' ? (
+                            `<div class="">--</div>`
+                        ) : (
+                            `<div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
+                            </div>`
+                        )}
                     <div class="flex items-center">
                         <p>${item.jenis_modem}</p>
                     </div>
@@ -68,23 +86,14 @@ const displayFunction = (data, wrapper, val) => {
                         <p>${item.plan}</p>
                     </div>
                     <div>
-                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in-progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
+                        <p class="${val == 'rented' ? 'countdown' : ''}" data-end="${val === 'rented' ? item.finishAt : ''}">${val === 'in progress' ? item.startAt : val === 'finished' ? 'Time\'s Up' : ''}</p>
                     </div>
                     <div class="flex items-center">
                         <p class="${val === 'rented' ? 'text-blue-500' : val === 'in-progress' ? 'text-yellow-500' : 'text-green-500'}">${item.status}</p>
                     </div>
-                    <div>
-                        ${val === 'finished' ? (
-                            `<a class="cursor-pointer delete" data-href="fasilitator/update/status/item.status/item.id"  data-name="${item.name}"><iclass="fa-solid fa-trash"></iclass=></a>`
-                        ) : (
-                            `<a class="me-4 cursor-pointer update" data-href="fasilitator/update/status/item.status/item.id" data-name="${item.name}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="cursor-pointer delete" data-href="fasilitator/delete/status/item.id" data-name="${item.name}"><i class="fa-solid fa-trash"></i></a>`
-                        )}
-                    </div>
                 </div>`;
 
     }
-
     return html;
 }
 

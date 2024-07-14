@@ -803,6 +803,10 @@ video {
   margin-top: 80px;
 }
 
+.ms-3 {
+  margin-inline-start: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1060,14 +1064,6 @@ video {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-6 {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-cols-8 {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .grid-cols-9 {
@@ -1494,6 +1490,10 @@ video {
   padding-inline-end: 0.5rem;
 }
 
+.ps-2 {
+  padding-inline-start: 0.5rem;
+}
+
 .pt-32 {
   padding-top: 8rem;
 }
@@ -1512,10 +1512,6 @@ video {
 
 .pt-\[80px\] {
   padding-top: 80px;
-}
-
-.ps-2 {
-  padding-inline-start: 0.5rem;
 }
 
 .text-center {

@@ -96,9 +96,14 @@ const displayFunction = (data, wrapper, val) => {
                         <div class="flex items-center">
                             <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-passport" data-passport="${item.passport}">Lihat Gambar</button>
                         </div>
-                        <div class="flex items-center">
-                            <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
-                        </div>
+                        ${item.boarding_passport == '-' ? (
+                            `<div class="text-center ms-2">--</div>`
+                        ) : (
+                            `<div class="flex items-center">
+                                <button class="p-2 bg-sky-400 rounded-sm text-white text-[12px] lihat-boardingpass" data-boardingpass="${item.boarding_passport}">Lihat Gambar</button>
+                            </div>`
+                        )}
+                        
                     <div class="flex items-center">
                         <p>${item.jenis_modem}</p>
                     </div>
